@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    You cannot use this service because you live in Northern Ireland
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "which-country-do-you-live-in",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-heading-l">You cannot use this service because you live in Northern Ireland</h1>
+
+        <p>You can find information about getting help with health costs at <a href="https://www.nidirect.gov.uk/articles/help-health-costs">NIdirect.gov.uk (opens in a new tab)</a>.</p>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

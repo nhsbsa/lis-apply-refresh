@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    What is your name?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "who-is-applying",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Personal details</span>
+        <h1 class="nhsuk-heading-l">What is your name?</h1>
+        
+        <form action="date-of-birth" method="post">
+            {{ input({
+            "label": {
+                "text": "First name"
+            },
+            "id": "first-name",
+            "name": "firstName",
+            "classes": "nhsuk-input--width-20",
+            "value": data['firstName'] | capitalize,
+            "hint": {
+                "text": "Use your full name. For example, Susan not Sue."
+            }
+            }) }}
+
+            {{ input({
+                "label": {
+                    "text": "Middle name (optional)"
+                },
+                "id": "middle-name",
+                "name": "middleName",
+                "classes": "nhsuk-input--width-20",
+                "value": data['middleName'] | capitalize
+            }) }}
+
+            {{ input({
+                "label": {
+                    "text": "Last name"
+                },
+                "id": "last-name",
+                "name": "lastName",
+                "classes": "nhsuk-input--width-20",
+                "value": data['lastName'] | capitalize
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

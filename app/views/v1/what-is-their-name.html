@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    What is their name?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "who-is-applying",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Personal details</span>
+        <h1 class="nhsuk-heading-l">What is their name?</h1>
+        
+        <form action="their-date-of-birth" method="post">
+            {{ input({
+            "label": {
+                "text": "First name"
+            },
+            "id": "first-name",
+            "name": "theirFirstName",
+            "classes": "nhsuk-input--width-20",
+            "value": data['theirFirstName'] | capitalize,
+            "hint": {
+                "text": "Use their full name. For example, Susan not Sue."
+            }
+            }) }}
+
+            {{ input({
+                "label": {
+                    "text": "Middle name (optional)"
+                },
+                "id": "middle-name",
+                "name": "theirMiddleName",
+                "classes": "nhsuk-input--width-20",
+                "value": data['theirMiddleName'] | capitalize
+            }) }}
+
+            {{ input({
+                "label": {
+                    "text": "Last name"
+                },
+                "id": "last-name",
+                "name": "theirLastName",
+                "classes": "nhsuk-input--width-20",
+                "value": data['theirLastName'] | capitalize
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

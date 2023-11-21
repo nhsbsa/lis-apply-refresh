@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    Enter the email address you want to save your application with
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "save-your-application-dob",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Saving your application for later</span>
+        <h1 class="nhsuk-heading-l">Enter the email address you want to save your application with</h1>
+
+        <p>You will need access to this email address.</p>
+        <p>We will only use this to save your application and let you continue it later.</p>
+        
+        <form action="application-saved" method="post">
+            {{ input({
+                "label": {
+                  "text": "Email address"
+                },
+                "id": "save-email",
+                "name": "saveEmail",
+                "classes": "nhsuk-input--width-20"
+              }) }}
+
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

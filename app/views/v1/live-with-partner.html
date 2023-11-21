@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you live with a partner?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "permanent-care-home",
+            "text": "Go back"
+        }) }}
+
+        <form action="live-with-partner" method="post">
+            <span class="nhsuk-caption-l">Before you start</span>
+            {{ radios({
+                "idPrefix": "partner",
+                "name": "partner",
+                "fieldset": {
+                    "legend": {
+                        "text": "Do you live with a partner?",
+                        "classes": "nhsuk-fieldset__legend--l",
+                        "isPageHeading": true
+                    }
+                },
+                "hint": {
+                    "text": "This means you live together as a couple, you don't have to be married or in a civil partnership."
+                },
+                "items": [
+                {
+                    "value": "yes",
+                    "text": "Yes"
+                },
+                {
+                    "value": "no",
+                    "text": "No"
+                }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

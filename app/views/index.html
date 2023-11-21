@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+LIS Apply Prototype
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- Adding empty phaseBanner block removes phase banner, dont add if you want it in -->
+{% block phaseBanner %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+		<h1>
+			Apply online for help with NHS costs
+		</h1>
+
+		{{ details({
+		"classes": "nhsuk-expander",
+		"text": "Version 1",
+		"HTML": "
+			<p>Re-design of the existing LIS apply service using the new NHS toolkit.</p>
+			<a href=\"/v1/start\" class=\"nhsuk-button\" role=\"button\">View prototype</a>"
+		}) }}
+
+		<!-- End of content -->
+	</div>
+</div>
+{% endblock %}

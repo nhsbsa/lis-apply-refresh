@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do they have a UK phone number?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "who-to-contact",
+            "text": "Go back"
+        }) }}
+
+        {% if data['theirFirstName'] %}
+        {% set theirName = data['theirFirstName'] %}
+        {% else %}
+        {% set theirName = "THEIR-NAME-HERE" %}
+        {% endif %}
+
+        <form action="they-have-phone-number" method="post">
+            <span class="nhsuk-caption-l">Contact details</span>
+            {{ radios({
+                "idPrefix": "phone",
+                "name": "theyPhone",
+                "fieldset": {
+                    "legend": {
+                        "text": "Does " + theirName | capitalize + " have a UK phone number?",
+                        "classes": "nhsuk-fieldset__legend--l",
+                        "isPageHeading": true
+                    }
+                },
+                "hint": {
+                    "text": "We will only use this to contact them about their application. Providing a phone number will help avoid delays to their application if we need further information."
+                },
+                "items": [
+                {
+                    "value": "yes",
+                    "text": "Yes"
+                },
+                {
+                    "value": "no",
+                    "text": "No"
+                }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

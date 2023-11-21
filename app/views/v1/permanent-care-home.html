@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you live permanently in a care home?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "which-country-do-you-live-in",
+            "text": "Go back"
+        }) }}
+
+        <form action="permanent-care-home" method="post">
+            <span class="nhsuk-caption-l">Before you start</span>
+            {{ radios({
+                "idPrefix": "care-home",
+                "name": "care",
+                "fieldset": {
+                "legend": {
+                    "text": "Do you live permanently in a care home?",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    "isPageHeading": true
+                }
+                },
+                "items": [
+                {
+                    "value": "yes",
+                    "text": "Yes"
+                },
+                {
+                    "value": "no",
+                    "text": "No"
+                }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

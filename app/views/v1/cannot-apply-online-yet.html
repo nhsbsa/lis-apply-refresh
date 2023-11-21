@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you get help to pay for your care home from your local council?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-heading-l">
+			You can't apply online yet
+		</h1>
+
+        <h2 class="nhsuk-heading-m">
+            This service is still being developed
+        </h2>
+
+        <p>Based on your circumstances, you can't apply online yet.</p>
+        <p>Instead, you can apply using a paper form called an HC1. Find out <a href="https://www.nhsbsa.nhs.uk/nhs-low-income-scheme" target="_blank">how to get an application form (opens in a new tab)</a>.</p>
+
+        {{ insetText({
+        "HTML": "<p>If you're aged 18 and under and in full-time education, you are already entitled to full help with your health costs and you do not need to apply for this scheme. For more information, <a href=\"https://www.nhsbsa.nhs.uk/help-nhs-prescription-costs/free-nhs-prescriptions\" target=\"_blank\">visit our site (opens in a tab)</a>.</p>"
+        }) }}
+        
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

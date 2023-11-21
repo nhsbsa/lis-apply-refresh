@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    Your application has been saved
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{% if data['saveEmail'] %}
+{% set saveEmailAddress = data['saveEmail'] %}
+{% else %}
+{% set saveEmailAddress = "example@live.com" %}
+{% endif %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        <h1>Your application has been saved</h1>
+        <p>We have sent an email confirming this to <strong>{{ saveEmailAddress }}</strong>. The email also tells you how to return to your application.</p>
+
+        <h2 class="nhsuk-heading-m">Application status</h2>
+        <p>Your application has been saved, but has not been submitted.</p>
+        <p>For privacy reasons, your application can only be saved for 14 days from when you first started it.</p>
+        <p>You will need to start again if you do not complete and submit it by:</p>
+
+        {{ insetText({
+        "HTML": "<p>15 November 2023 10:58am</p>"
+        }) }}
+
+        <p>You can close your browser. Or, if you want to continue your application now, return to the start page and select <strong>Continue an application</strong>.</p>
+
+        <a href="start" class="nhsuk-button" role="button">Return to start page</a>
+        
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

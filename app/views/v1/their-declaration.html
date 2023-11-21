@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    Declaration
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        {% if data['theirFirstName'] %}
+            {% set name = data['theirFirstName'] %}
+        {% else %}
+            {% set name = "THEIR-NAME-HERE" %}
+        {% endif %}
+
+        <span class="nhsuk-caption-l">Submit your application</span>
+        <h1 class="nhsuk-heading-l">Declaration</h1>
+
+        <p>I confirm that:</p>
+
+        <ul>
+            <li>the information I have given on this form is correct and complete, and I understand that if it is not, appropriate action may be taken</li>
+            <li>I understand <a href="https://www.nhsbsa.nhs.uk/nhs-low-income-scheme/nhs-low-income-scheme-privacy-notice" target="_blank">how my information will be used (opens in a new tab)</a></li>
+            <li>I am completing this form on behalf of {{ name | capitalize }} and I'm responsible for this person's financial affairs</li>
+        </ul>
+
+        {{ insetText({
+        "HTML": "<p>False information may lead to civil or criminal action.
+            Anyone found to have wrongly claimed help with NHS costs will have to pay a penalty charge or may face prosecution.</p>"
+        }) }}        
+
+        <a href="#" class="nhsuk-button" role="button">Agree and submit my application</a>
+        
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

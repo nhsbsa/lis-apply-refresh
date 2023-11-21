@@ -1,0 +1,26 @@
+// Import NHS.UK frontend library
+@import 'node_modules/nhsuk-frontend/packages/nhsuk';
+
+// Components that are not in the NHS.UK frontend library
+@import 'components/list-border';
+@import 'components/related-nav';
+@import 'components/phase-banner';
+
+///////////////////////////////////////////
+// Add your custom CSS/Sass styles below...
+///////////////////////////////////////////
+
+.nhsbsa-panel {
+    color: #fff;
+    background:  $color_nhsuk-blue;
+    font-size: 1rem;
+    line-height: 1.25;
+    box-sizing: border-box;
+    margin-bottom: 35px;
+    padding: 35px;
+    border: 5px solid rgba(0,0,0,0);
+    text-align: center;
+    h1 {
+        margin-bottom: 0px;
+    }
+}

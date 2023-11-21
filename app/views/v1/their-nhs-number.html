@@ -1,0 +1,119 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+NHS number
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "what-is-their-address",
+            "text": "Go back"
+        }) }}
+
+        {% if data['theirFirstName'] %}
+            {% set name = data['theirFirstName'] %}
+        {% else %}
+            {% set name = "THEIR-NAME-HERE" %}
+        {% endif %}
+
+        <span class="nhsuk-caption-l">Personal details</span>
+        <h1 class="nhsuk-heading-l">Do you know {{ name | capitalize }}'s NHS number?</h1>
+
+        <p>You don't have to tell us {{ name | capitalize }}'s NHS number, but telling us helps us to identify them correctly and match their details to their health records.</p>
+        
+        <form action="check-their-answers-personal-details" method="post">
+            {% set yesHtml %}
+                {{ input({
+                    "label": {
+                    "text": "What is " + name | capitalize + "\'s NHS number?"
+                    },
+                    "hint": {
+                    "text": "Their NHS number is not the same as their National Insurance number, which has letters in it."
+                    },
+                    id: "yes-nhs-number",
+                    name: "yesNhsNumber",
+                    classes: "nhsuk-u-width-two-thirds"
+                }) }}
+            {% endset -%}
+
+            {{ radios({
+            "idPrefix": "nhs-number",
+            "name": "nhsNumber",
+            "fieldset": {
+                "legend": {
+                "text": "Do you know" + name | capitalize + "NHS number?",
+                "classes": "nhsuk-u-visually-hidden",
+                "isPageHeading": false
+                }
+            },
+            "hint": {
+                "text": "Their NHS number is a 10-digit number, like 485 777 3456."
+            },
+            "items": [
+                {
+                "value": "yes",
+                "text": "Yes",
+                "conditional": {
+                    "html": yesHtml
+                  }
+                },
+                {
+                "value": "no",
+                "text": "No"
+                }
+            ]
+            }) }}
+
+              <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Where to find {{ name | capitalize}}'s NHS number
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>If {{ name | capitalize }} is registered with a GP, they'll have a 10-digit NHS number that is unique to them.</p>
+                    <p>It's usually on any letter or document {{ name | capitalize }} has received from the NHS, such as:</p>
+
+                    <ul>
+                        <li>
+                            prescriptions, usually underneath their name and address
+                        </li>
+                        <li>
+                            test results
+                        </li>
+                        <li>
+                            appointment letters
+                        </li>
+                        <li>
+                            maternity notes
+                        </li>
+                        <li>
+                            an NHS medical card
+                        </li>
+                    </ul>
+                </div>
+              </details>
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

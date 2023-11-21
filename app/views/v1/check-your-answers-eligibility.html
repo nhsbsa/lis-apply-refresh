@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "council-name",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Apply for help with NHS costs</span>
+        <h1 class="nhsuk-heading-l">Check your answers</h1>
+
+        <h2 class="nhsuk-heading-m">Check eligibility</h2>
+
+        {{ summaryList({
+        rows: [
+            {
+            key: {
+                text: "Country you live in"
+            },
+            value: {
+                text: data['country'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "which-country-do-you-live-in",
+                    text: "Change",
+                    visuallyHiddenText: "country you live in"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Live permanently in a care home"
+            },
+            value: {
+                text: data['care'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "permanent-care-home",
+                    text: "Change",
+                    visuallyHiddenText: "if you live permanently in a care home"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Council helps to pay"
+            },
+            value: {
+                text: data['council'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "council-help-pay",
+                    text: "Change",
+                    visuallyHiddenText: "council helps to pay"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Council name"
+            },
+            value: {
+                text: data['councilName'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "council-name",
+                    text: "Change",
+                    visuallyHiddenText: "council name"
+                }
+                ]
+            }
+            }
+        ]
+        }) }}
+
+        <a href="you-can-apply-online" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

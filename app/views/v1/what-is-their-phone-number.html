@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    What is their phone number?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "they-have-phone-number",
+            "text": "Go back"
+        }) }}
+
+        {% if data['theirFirstName'] %}
+        {% set theirName = data['theirFirstName'] %}
+        {% else %}
+        {% set theirName = "THEIR-NAME-HERE" %}
+        {% endif %}
+
+        <span class="nhsuk-caption-l">Contact details</span>
+        <h1 class="nhsuk-heading-l">What is {{ theirName | capitalize }}'s phone number?</h1>
+
+        <p class="nhsuk-hint">This can be a UK mobile or landline number.</p>
+        
+        <form action="what-is-their-phone-number" method="post">
+            {{ input({
+            "label": {
+                "text": "Phone number"
+            },
+            "id": "phone-number",
+            "name": "theirPhoneNumber",
+            "classes": "nhsuk-input--width-20",
+            "value": data['theirPhoneNumber']
+            }) }}
+
+            {{ checkboxes({
+                "idPrefix": "deaf",
+                "name": "theyDeaf",
+                "fieldset": {
+                  "legend": {
+                    "text": "I'm deaf or hard of hearing and use a text relay service.",
+                    "classes": "nhsuk-u-visually-hidden",
+                    isPageHeading: false
+                  }
+                },
+                "items": [
+                  {
+                    "value": "yes",
+                    "text": theirName | capitalize + " is deaf or hard of hearing and uses a text relay service."
+                  }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

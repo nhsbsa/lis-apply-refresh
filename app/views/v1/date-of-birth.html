@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    What is your date of birth?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "what-is-your-name",
+            "text": "Go back"
+        }) }}
+
+        <form action="what-is-your-address" method="post">
+            <span class="nhsuk-caption-l">Personal details</span>
+            {{ dateInput({
+              "id": "dob",
+              "namePrefix": "dob",
+              "fieldset": {
+                "legend": {
+                  "text": "What is your date of birth?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
+              "items": [
+                {
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2"
+                },
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2"
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4"
+                }
+              ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

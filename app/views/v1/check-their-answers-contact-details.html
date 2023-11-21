@@ -1,0 +1,142 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Apply for help with NHS costs</span>
+        <h1 class="nhsuk-heading-l">Check your answers</h1>
+
+        <h2 class="nhsuk-heading-m">Contact details</h2>
+
+        <!-- Logic for what to display for NHS number in summary list component -->
+        {% if data['yesNhsNumber'] %}
+            {% set nhsNumber = data['yesNhsNumber'] %}
+        {% else %}
+            {% set nhsNumber = "No" %}
+        {% endif %}
+        <!-- End -->
+
+        <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Who to contact
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {{ data['theirFirstName'] | capitalize or "Their-name-here"}}
+                </dd>
+          
+                <dd class="nhsuk-summary-list__actions">
+                  <a href="who-to-contact">
+                    Change<span class="nhsuk-u-visually-hidden"> who to contact</span>
+                  </a>
+                </dd>
+              </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Have phone number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['theyPhone'] | capitalize or "No"}}
+              </dd>
+        
+              <dd class="nhsuk-summary-list__actions">
+                <a href="they-have-phone-number">
+                  Change<span class="nhsuk-u-visually-hidden"> have phone number</span>
+                </a>
+              </dd>
+            </div>
+          
+            {% if data['theyPhone'] == 'yes' %}
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Phone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['theirPhoneNumber'] }}
+                    
+                    {% if data['theyDeaf'] == 'yes' %}
+                        <p>{{ data['theirFirstName'] | capitalize or "Their-name-here"}} is deaf or hard of hearing and use a text relay service.</p>
+                    {% else %}
+                        <!-- Else show nothing -->
+                    {% endif %}
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="what-is-their-phone-number">
+                    Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+                    </a>
+                </dd>
+                </div>
+            {% else %}
+                <!-- If dont have phone number dont show next row -->
+            {% endif %}
+          
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Have email address
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['theyEmail'] | capitalize or "No"}}
+              </dd>
+          
+              <dd class="nhsuk-summary-list__actions">
+          
+                <a href="they-have-email-address">
+                  Change<span class="nhsuk-u-visually-hidden"> have email address</span>
+                </a>
+          
+              </dd>
+          
+            </div>
+
+            {% if data['theyEmail'] == 'yes' %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Email address
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                    {{ data['theirEmailAddress'] }}
+                    </dd>
+                
+                    <dd class="nhsuk-summary-list__actions">
+                
+                    <a href="what-is-their-email-address">
+                        Change<span class="nhsuk-u-visually-hidden"> email address</span>
+                    </a>
+                
+                    </dd>
+                </div>
+            {% else %}
+                <!-- If dont have email address dont show next row -->
+            {% endif %}
+          </dl>
+
+        <a href="their-application-progress-3" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}
