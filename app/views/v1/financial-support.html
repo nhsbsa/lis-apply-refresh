@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you get financial support from any of these?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "education-or-training",
+            "text": "Go back"
+        }) }}
+        <form action="#ß" method="post">
+          <span class="nhsuk-caption-l">Before you start</span>
+
+
+        {% from 'checkboxes/macro.njk' import checkboxes %}
+
+<form>
+  {{ checkboxes({
+    idPrefix: "financial-support",
+    name: "financialSupport",
+    fieldset: {
+      legend: {
+        text: "Do you get financial support from any of these?",
+        isPageHeading: true,
+        classes: "nhsuk-fieldset__legend--l"
+      }
+    },
+    
+    items: [
+      {
+        value: "money-coming-in",
+        text: "Support from Student Finance England (SFE), Student Finance Wales (SFW), or the Student Awards Agency for Scotland (SAAS)",
+        exclusiveGroup: "financial-support"
+      },
+      {
+        value: "cant-apply",
+        text: "NHS Bursary",
+        exclusiveGroup: "financial-support"
+      },
+      {
+        value: "cant-apply",
+        text: "Bursary from your higher education institution (HEI)",
+        exclusiveGroup: "financial-support"
+      },
+    
+      {
+        value: "cant-apply",
+        text: "Other scholarship, sponsorship, award or bursary",
+        exclusiveGroup: "financial-support"
+      },
+      {
+        value: "cant-apply",
+        text: "Grant or loan from overseas",
+        exclusiveGroup: "financial-support"
+      },
+      {
+        value: "money-coming-in",
+        text: "Family or friends",
+        exclusiveGroup: "financial-support"
+      },
+
+      {
+        divider: "or"
+      },
+
+      {
+        value: "money-coming-in",
+        text: "No, I do not get financial support from any of these",
+        exclusive: true,
+        exclusiveGroup: "financial-support"
+      }
+    ]
+  }) }}
+
+  {{ button({
+    "text": "Continue"
+}) }}
+</form>
+       
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

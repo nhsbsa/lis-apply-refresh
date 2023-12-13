@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you get money from any of these?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "financial-support",
+            "text": "Go back"
+        }) }}
+
+        {% from 'checkboxes/macro.njk' import checkboxes %}
+
+<form>
+  {{ checkboxes({
+    idPrefix: "money-coming-in",
+    name: "moneyComingIn",
+    
+    fieldset: {
+      legend: {
+        text: "Do you get money from any of these?",
+        isPageHeading: true,
+        classes: "nhsuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "Select all that apply to you"
+    },
+    items: [
+      {
+        value: "more-than-6000",
+        text: "Pensions (state, work, private)",
+        exclusiveGroup: "money-in"
+      },
+      {
+        value: "more-than-6000",
+        text: "Benefits (for example, Universal Credit, Personal Independence Payment or Employment and Support Allowance)",
+        exclusiveGroup: "money-in"
+      },
+      {
+        value: "more-than-6000",
+        text: "Wages from a job",
+        exclusiveGroup: "money-in"
+      },
+      {
+        value: "cant-apply",
+        text: "Self-employment (includes subcontractors & directors of limited companies)",
+        exclusiveGroup: "money-in"
+      },
+      {
+        value: "cant-apply",
+        text: "Apprenticeships",
+        exclusiveGroup: "money-in"
+      },
+      {
+        value: "cant-apply",
+        text: "Maintenance payments from an ex-partner",
+        exclusiveGroup: "money-in"
+      },
+      {
+        value: "cant-apply",
+        text: "Statutory Maternity Pay or Statutory Paternity Pay",
+        exclusiveGroup: "money-in"
+      },
+      {
+        value: "cant-apply",
+        text: "Trust funds",
+        exclusiveGroup: "money-in"
+      },
+
+      {
+        divider: "or"
+      },
+      {
+        value: "more-than-6000",
+        text: "No, I do not get money from any of these",
+        exclusive: true,
+        exclusiveGroup: "money-in"
+      }
+    ]
+  }) }}
+
+  {{ button({
+    "text": "Continue"
+}) }}
+</form>
+       
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

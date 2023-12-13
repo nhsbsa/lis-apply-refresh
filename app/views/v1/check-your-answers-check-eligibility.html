@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Check your answers
+Check your answers check eligibility
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -64,10 +64,28 @@ Check your answers
                     visuallyHiddenText: "if you live permanently in a care home"
                 }
                 ]
+            },
+
+            {
+            key: {
+                    text: "Live permanently in a care home"
+                },
+                value: {
+                    text: data['care'] | capitalize
+            },
+
+            actions: {
+                items: [
+                {
+                    href: "live-with-partner",
+                    text: "Change",
+                    visuallyHiddenText: "if you live with a partner"
+                }
+                ]
             }
             },
             {
-             key: {
+            key: {
                 text: "Council helps to pay"
             },
             value: {

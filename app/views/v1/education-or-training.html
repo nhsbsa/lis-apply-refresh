@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Have you claimed asylum to stay in the UK?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "claimed-asylum",
+            "text": "Go back"
+        }) }}
+
+        <form action="#ß" method="post">
+            <span class="nhsuk-caption-l">Before you start</span>
+            {{ radios({
+                "idPrefix": "training",
+                "name": "training",
+                "fieldset": {
+                    "legend": {
+                        "text": "Are you in education or training?",
+                        "classes": "nhsuk-fieldset__legend--l",
+                        "isPageHeading": true
+                    }
+                },
+                "items": [
+                {
+                    "value": "yes",
+                    "text": "Yes"
+                },
+                {
+                    "value": "no",
+                    "text": "No"
+                }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

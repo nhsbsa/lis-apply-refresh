@@ -195,4 +195,83 @@ router.post('/v1/you-or-partner-education', function(request, response) {
     }
 });
 
+// claimed-asylum.html
+router.post('/v1/claimed-asylum', function(request, response) {
+    var asylum = request.session.data['asylum']
+    
+    if (asylum == "yes"){
+        response.redirect("/v1/asylum-application-decision")
+    } else {
+        response.redirect("/v1/education-or-training")
+    }
+});
+
+// asylum-application-decision.html
+router.post('/v1/asylum-application-decision', function(request, response) {
+    var decision = request.session.data['decision']
+
+    if (decision == "yes"){
+            response.redirect("/v1/education-or-training")
+    } else {
+                response.redirect("/v1/support-from-uk-visas-immigration")
+    }
+});
+
+// support-from-uk-visas-immigration.html
+router.post('/v1/support-from-uk-visas-immigration', function(request, response) {
+    var support = request.session.data['support']
+
+    if (support == "yes"){
+            response.redirect("/v1/full-exemption-asylum-decision")
+    } else {
+                response.redirect("/v1/education-or-training")
+    }
+});
+
+// education-or-training.html
+router.post('/v1/education-or-training', function(request, response) {
+    var training = request.session.data['training']
+
+    if (training == "yes"){
+            response.redirect("/v1/financial-support")
+    } else {
+                response.redirect("/v1/money-coming-in")
+    }
+});
+
+// financial-support.html
+router.post('/v1/financial-support', function(request, response) {
+    var financialSupport = request.session.data['financialSupport']
+
+    if (financialSupport == "cant-apply"){
+            response.redirect("/v1/cannot-apply-online-yet")
+    } else {
+                response.redirect("/v1/money-coming-in")
+    }
+});
+
+// money-coming-in.html
+router.post('/v1/money-coming-in', function(request, response) {
+    var moneyComingIn = request.session.data['moneyComingIn']
+
+    if (moneyComingIn == "more-than-6000"){
+            response.redirect("v1/more-than-6000")
+    } else {
+                response.redirect("v1/cannot-apply-online-yet")
+    }
+});
+
+// money-than-6000.html
+router.post('/v1/money-coming-in', function(request, response) {
+    var moreThan6000 = request.session.data['moreThan6000']
+
+    if (moreThan6000 == "yes"){
+            response.redirect("v1/cannot-apply-online-yet")
+    } else {
+                response.redirect("v1/check-your-answers-check-eligibility")
+    }
+});
+
+
+
 module.exports = router;
