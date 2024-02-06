@@ -1,0 +1,143 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Your application
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        <h1>Your application</h1>
+
+        <p>You cannot send your application until you have completed all the sections.</p>
+        <p>To work out what help you can get, we need more information about you.</p>
+
+        <a href="save-your-application" class="nhsuk-button nhsuk-button--secondary" role="button">Save and come back later</a>
+
+        <h2 class="nhsuk-heading-m">1. Check before you start</h2>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dd class="nhsuk-summary-list__value">
+                    <a href="check-your-answers-eligibility">Check eligibility</a>
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <strong class="nhsuk-tag nhsuk-tag--green">
+                        Completed
+                    </strong>
+                </dd>
+            </div>
+        </dl>
+
+        <h2 class="nhsuk-heading-m">2. About you</h2>
+        <p>To work out what help you can get, we need information about your housing costs and income.</p>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dd class="nhsuk-summary-list__value">
+                    <a href="check-your-answers-personal-details">Personal details</a>
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <strong class="nhsuk-tag nhsuk-tag--green">
+                        Completed
+                    </strong>
+                </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dd class="nhsuk-summary-list__value">
+                    <a href="check-your-answers-contact-details"> Contact details </a>
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <strong class="nhsuk-tag nhsuk-tag--green">
+                        Completed
+                    </strong>
+                </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dd class="nhsuk-summary-list__value">
+                    <a href="check-your-answers-education-training-details"> Education and training </a>
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <strong class="nhsuk-tag nhsuk-tag--green">
+                        Completed
+                    </strong>
+                </dd>
+            </div>
+        </dl>
+
+        <h2 class="nhsuk-heading-m">3. About your income </h2>
+    
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dd class="nhsuk-summary-list__value">
+                    <a href="tuition-fees"> Money to support your education </a>
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <strong class="nhsuk-tag nhsuk-tag">
+                        To do
+                    </strong>
+                </dd>
+            </div>
+
+        
+        </dl>
+
+        <h2 class="nhsuk-heading-m">4. About your home </h2>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dd class="nhsuk-summary-list__value">
+                    <p> Where you live </p>
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <strong class="nhsuk-tag nhsuk-tag--grey">
+                        Can't start yet
+                    </strong>
+                </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dd class="nhsuk-summary-list__value">
+                    <p> People who live with you </p>
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <strong class="nhsuk-tag nhsuk-tag--grey">
+                        Can't start yet
+                    </strong>
+                </dd>
+            </div>
+
+        
+        </dl>
+
+        <h2 class="nhsuk-heading-m">5. Submit application</h2>
+
+
+
+        <a href="" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

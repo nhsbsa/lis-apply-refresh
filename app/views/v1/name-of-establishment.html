@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Education or training?
+What is the name of your school, college or university?
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -21,32 +21,22 @@ Education or training?
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
         {{ backLink({
-            "href": "claimed-asylum",
+            "href": "full-or-part-time",
             "text": "Go back"
         }) }}
 
-        <form action="#ß" method="post">
-            <span class="nhsuk-caption-l">Before you start</span>
-            {{ radios({
-                "idPrefix": "training",
-                "name": "training",
-                "fieldset": {
-                    "legend": {
-                        "text": "Are you in education or training?",
-                        "classes": "nhsuk-fieldset__legend--l",
-                        "isPageHeading": true
-                    }
-                },
-                "items": [
-                {
-                    "value": "yes",
-                    "text": "Yes"
-                },
-                {
-                    "value": "no",
-                    "text": "No"
-                }
-                ]
+        <span class="nhsuk-caption-l">Education and training </span>
+        <h1 class="nhsuk-heading-l">What is the name of your school, college or university?</h1>
+        
+        <form action="qualification-level" method="post">
+            {{ input({
+            "label": {
+                "text": "Name of establishment"
+            },
+            "id": "establishment-name",
+            "name": "establishmentName",
+            "classes": "nhsuk-input--width-20",
+            "value": data['establishmentName'] | capitalize
             }) }}
 
             {{ button({

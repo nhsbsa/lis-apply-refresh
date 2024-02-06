@@ -254,7 +254,7 @@ router.post('/v1/financial-support', function(request, response) {
 router.post('/v1/money-coming-in', function(request, response) {
     var moneyComingIn = request.session.data['moneyComingIn']
 
-    if (moneyComingIn == "more-than-6000"){
+    if (moneyComingIn == "yes"){
             response.redirect("v1/more-than-6000")
     } else {
                 response.redirect("v1/cannot-apply-online-yet")
@@ -262,7 +262,7 @@ router.post('/v1/money-coming-in', function(request, response) {
 });
 
 // money-than-6000.html
-router.post('/v1/money-coming-in', function(request, response) {
+router.post('/v1/more-than-6000', function(request, response) {
     var moreThan6000 = request.session.data['moreThan6000']
 
     if (moreThan6000 == "yes"){
@@ -271,6 +271,30 @@ router.post('/v1/money-coming-in', function(request, response) {
                 response.redirect("v1/check-your-answers-check-eligibility")
     }
 });
+
+
+//full-or-part-time.html
+router.post('/v1/full-or-part-time', function(request, response) {
+    var full = request.session.data['full']
+
+    if (full == "yes"){
+            response.redirect("v1/name-of-establishment")
+    } else {
+                response.redirect("v1/name-of-establishment")
+    }
+});
+
+//how-many-terms.html
+router.post('/v1/how-many-terms', function(request, response) {
+    var terms = request.session.data['terms']
+
+    if (terms == "yes"){
+            response.redirect("v1/first-term-dates")
+    } else {
+                response.redirect("v1/course-start")
+    }
+});
+
 
 
 

@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Education or training?
+What subject are you studying?
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -21,32 +21,29 @@ Education or training?
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
         {{ backLink({
-            "href": "claimed-asylum",
+            "href": "qualification-level",
             "text": "Go back"
         }) }}
 
-        <form action="#ß" method="post">
-            <span class="nhsuk-caption-l">Before you start</span>
-            {{ radios({
-                "idPrefix": "training",
-                "name": "training",
-                "fieldset": {
-                    "legend": {
-                        "text": "Are you in education or training?",
-                        "classes": "nhsuk-fieldset__legend--l",
-                        "isPageHeading": true
-                    }
-                },
-                "items": [
-                {
-                    "value": "yes",
-                    "text": "Yes"
-                },
-                {
-                    "value": "no",
-                    "text": "No"
-                }
-                ]
+        <span class="nhsuk-caption-l">Education and training </span>
+        <h1 class="nhsuk-heading-l">What subject are you studying?</h1>
+       
+        <div class="nhsuk-hint" id="contact-hint">
+            For example, English Literature or Health and Social Care.
+          </div>
+        
+        <form action="term-dates-correct" method="post">
+        
+            {{ input({
+                
+            "label": {
+                "text": "Subject"},
+            
+            "id": "qualification-level",
+       
+            "name": "subject",
+            "classes": "nhsuk-input--width-20",
+            "value": data['subject'] | capitalize
             }) }}
 
             {{ button({

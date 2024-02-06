@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Education or training?
+Are you in full or part time education?
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -21,18 +21,18 @@ Education or training?
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
         {{ backLink({
-            "href": "claimed-asylum",
+            "href": "your-application-progress-3",
             "text": "Go back"
         }) }}
 
-        <form action="#ß" method="post">
-            <span class="nhsuk-caption-l">Before you start</span>
+        <form action="name-of-establishment" method="post">
+            <span class="nhsuk-caption-l"> Education and training </span>
             {{ radios({
-                "idPrefix": "training",
-                "name": "training",
+                "idPrefix": "full",
+                "name": "full",
                 "fieldset": {
                     "legend": {
-                        "text": "Are you in education or training?",
+                        "text": "Are you in full-time or part-time education?",
                         "classes": "nhsuk-fieldset__legend--l",
                         "isPageHeading": true
                     }
@@ -40,11 +40,11 @@ Education or training?
                 "items": [
                 {
                     "value": "yes",
-                    "text": "Yes"
+                    "text": "Full-time education"
                 },
                 {
                     "value": "no",
-                    "text": "No"
+                    "text": "Part-time education"
                 }
                 ]
             }) }}
