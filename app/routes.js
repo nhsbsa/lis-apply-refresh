@@ -27,6 +27,7 @@ router.post('/v1/permanent-care-home', function(request, response) {
     }
 });
 
+
 // council-help-pay.html
 router.post('/v1/council-help-pay', function(request, response) {
     var council = request.session.data['council']
@@ -239,16 +240,25 @@ router.post('/v1/education-or-training', function(request, response) {
     }
 });
 
+
+
 // financial-support.html
 router.post('/v1/financial-support', function(request, response) {
     var financialSupport = request.session.data['financialSupport']
+    console.log(financialSupport);
 
-    if (financialSupport == "cant-apply"){
-            response.redirect("/v1/cannot-apply-online-yet")
-    } else {
-                response.redirect("/v1/money-coming-in")
+    if (financialSupport == null){
+        response.redirect("/v1/financial-support")
     }
+
+    for (const element of financialSupport) {
+        if (element == "cant-apply"){
+            response.redirect("/v1/cannot-apply-online-yet")
+        }
+    }
+    response.redirect("/v1/money-coming-in")
 });
+
 
 // money-coming-in.html
 router.post('/v1/money-coming-in', function(request, response) {
