@@ -281,17 +281,33 @@ router.post('/v1/financial-support', function(request, response) {
     response.redirect("/v1/money-coming-in")
 });
 
-
 // money-coming-in.html
 router.post('/v1/money-coming-in', function(request, response) {
     var moneyComingIn = request.session.data['moneyComingIn']
+    console.log(moneyComingIn);
 
-    if (moneyComingIn == "yes"){
-            response.redirect("v1/more-than-6000")
-    } else {
-                response.redirect("v1/cannot-apply-online-yet")
+    if (moneyComingIn == null){
+        response.redirect("/v1/money-coming-in")
     }
+
+    for (const element of moneyComingIn) {
+        if (element == "cant-apply"){
+            response.redirect("/v1/cannot-apply-online-yet")
+        }
+    }
+    response.redirect("/v1/more-than-6000")
 });
+
+// // money-coming-in.html
+// router.post('/v1/money-coming-in', function(request, response) {
+//     var moneyComingIn = request.session.data['moneyComingIn']
+
+//     if (moneyComingIn == "more-than-6000"){
+//             response.redirect("v1/more-than-6000")
+//     } else {
+//                 response.redirect("v1/cannot-apply-online-yet")
+//     }
+// });
 
 // money-than-6000.html
 router.post('/v1/more-than-6000', function(request, response) {
