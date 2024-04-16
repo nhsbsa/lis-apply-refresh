@@ -27,10 +27,10 @@ Do you get money from any of these?
 
         {% from 'checkboxes/macro.njk' import checkboxes %}
 
-<form>
+<form action="money-coming-in-2" method="post">
   {{ checkboxes({
-    idPrefix: "money-coming-in",
-    name: "moneyComingIn",
+    idPrefix: "money-coming-in-2",
+    name: "moneyComingIn2",
     
     fieldset: {
       legend: {
