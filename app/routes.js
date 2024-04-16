@@ -192,7 +192,29 @@ router.post('/v1/you-or-partner-education', function(request, response) {
     if (education == "yes"){
         response.redirect("/v1/cannot-apply-online-yet")
     } else {
-        response.redirect("/v1/does-your-partner-get-money")
+        response.redirect("/v1/partner-money-coming-in")
+    }
+});
+
+// partner-money-coming-in.html
+router.post('/v1/partner-money-coming-in', function(request, response) {
+    var education = request.session.data['XXX']
+    
+    if (education == "yes"){
+        response.redirect("/v1/cannot-apply-online-yet")
+    } else {
+        response.redirect("/v1/money-coming-in-2")
+    }
+});
+
+// money-coming-in-2.html
+router.post('/v1/money-coming-in-2', function(request, response) {
+    var education = request.session.data['XXX']
+    
+    if (education == "yes"){
+        response.redirect("/v1/cannot-apply-online-yet")
+    } else {
+        response.redirect("/v1/XXX")
     }
 });
 
