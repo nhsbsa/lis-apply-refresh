@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Are you or your partner in education or training?
+Do you have more than £6,000 in savings, investments or property?
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -21,22 +21,26 @@ Are you or your partner in education or training?
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
         {{ backLink({
-            "href": "claimed-asylum-partner",
+            "href": "money-coming-in",
             "text": "Go back"
         }) }}
 
-        <form action="you-or-partner-education" method="post">
+        <form action="more-than-6000-2" method="post">
             <span class="nhsuk-caption-l">Before you start</span>
             {{ radios({
-                "idPrefix": "educationTraining",
-                "name": "educationTraining",
+                "idPrefix": "more-than-6000-2",
+                "name": "more-than-6000-2",
                 "fieldset": {
-                    "legend": {
-                        "text": "Are you or your partner in education or training?",
-                        "classes": "nhsuk-fieldset__legend--l",
-                        "isPageHeading": true
-                    }
+                "legend": {
+                    "text": "Do you have more than £6,000 in savings, investments or property?",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    "isPageHeading": true
+                }
                 },
+
+                hint: {
+                    text: "Do not include the property you live in."
+                  },
                 "items": [
                 {
                     "value": "yes",

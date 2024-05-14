@@ -1,0 +1,183 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "council-name",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Apply for help with NHS costs</span>
+        <h1 class="nhsuk-heading-l">Check your answers</h1>
+
+        <h2 class="nhsuk-heading-m">Check eligibility</h2>
+
+        {{ summaryList({
+        rows: [
+            {
+            key: {
+                text: "Country you live in"
+            },
+            value: {
+                text: data['country'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "which-country-do-you-live-in",
+                    text: "Change",
+                    visuallyHiddenText: "country you live in"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Live permanently in a care home"
+            },
+            value: {
+                text: data['care'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "permanent-care-home",
+                    text: "Change",
+                    visuallyHiddenText: "if you live permanently in a care home"
+                }
+                ]
+            }
+            },
+         {
+            key: {
+                    text: "Live with a partner"
+                },
+                value: {
+                    text: data['partner'] | capitalize
+            },
+
+            actions: {
+                items: [
+                {
+                    href: "live-with-partner",
+                    text: "Change",
+                    visuallyHiddenText: "if you live with a partner"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Claimed asylum"
+            },
+            value: {
+                text: data['asylumPartner'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "claimed-asylum-partner",
+                    text: "Change",
+                    visuallyHiddenText: "claimed asylum"
+                }
+                ]
+            }
+            },
+
+            {
+            key: {
+                text: "In education or training"
+            },
+            value: {
+                text: data['educationTraining'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "you-or-partner-education",
+                    text: "Change",
+                    visuallyHiddenText: "education training"
+                }
+                ]
+            }
+            },
+            {
+                key: {
+                    text: "Your partner gets money from"
+                },
+                value: {
+                    text: data['partnerMoneyComingIn']
+                },
+                actions: {
+                    items: [
+                    {
+                        href: "partner-money-coming-in",
+                        text: "Change",
+                        visuallyHiddenText: "partner gets money from"
+
+                }
+                ]
+            }
+            },
+            {
+                key: {
+                    text: "Get money from"
+                },
+                value: {
+                    text: data['moneyComingIn2']
+                },
+                actions: {
+                    items: [
+                    {
+                        href: "money-coming-in-2",
+                        text: "Change",
+                        visuallyHiddenText: "get money from"
+
+                }
+                ]
+            }
+            },
+            {
+                key: {
+                    text: "Have more than £6,000 in savings"
+                },
+                value: {
+                    text: data['more-than-6000-2'] | capitalize
+                },
+                actions: {
+                    items: [
+                    {
+                        href: "more-than-6000-2",
+                        text: "Change",
+                        visuallyHiddenText: "more than £6,000 in savings"
+
+                }
+                ]
+            }
+            }
+        ]
+        }) }}
+
+        <a href="you-can-apply-online" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+    </div>
+</div>
+{% endblock %}

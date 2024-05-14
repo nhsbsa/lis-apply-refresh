@@ -235,7 +235,7 @@ router.post('/v1/money-coming-in-2', function (request, response) {
     }
 
     // Otherwise, no 'cant-apply' checkboxes were checked, so proceed to next page
-    response.redirect("/v1/XXX")
+    response.redirect("/v1/more-than-6000-2")
 });
 
 
@@ -328,14 +328,25 @@ router.post('/v1/money-coming-in', function (request, response) {
 });
 
 
-// money-than-6000.html
+// more-than-6000.html
 router.post('/v1/more-than-6000', function (request, response) {
     var moreThan6000 = request.session.data['moreThan6000']
 
     if (moreThan6000 == "yes") {
-        response.redirect("v1/cannot-apply-online-yet")
+        response.redirect("/v1/cannot-apply-online-yet")
     } else {
-        response.redirect("v1/check-your-answers-check-eligibility")
+        response.redirect("/v1/check-your-answers-check-eligibility")
+    }
+});
+
+// more-than-6000-2.html
+router.post('/v1/more-than-6000-2', function (request, response) {
+    var moreThan6000 = request.session.data['more-than-6000-2']
+
+    if (moreThan6000 == "yes") {
+        response.redirect("/v1/cannot-apply-online-yet")
+    } else {
+        response.redirect("/v1/check-your-answers-check-eligibility-2")
     }
 });
 
