@@ -3,6 +3,8 @@ const express = require('express');
 
 const router = express.Router();
 
+
+
 // Version 1
 
 // which-country-do-you-live-in.html
@@ -309,7 +311,7 @@ router.post('/v1/1-check-eligibility/financial-support', function (request, resp
 // money-coming-in.html
 router.post('/v1/1-check-eligibility/money-coming-in', function (request, response) {
     var moneyComingIn = request.session.data['moneyComingIn']
-    console.log(moneyComingIn);
+    // console.log(moneyComingIn);
 
     // If no checkboxes selected, stay on this page
     if (moneyComingIn == null) {

@@ -66,7 +66,7 @@ Check your answers
                 ]
             }
             },
-         {
+        {
             key: {
                     text: "Live with a partner"
                 },
@@ -142,7 +142,7 @@ Check your answers
                     text: "Get money from"
                 },
                 value: {
-                    text: data['moneyComingIn'] | capitalize
+                    text: data['moneyComingIn']
                 },
                 actions: {
                     items: [
@@ -150,24 +150,6 @@ Check your answers
                         href: "money-coming-in",
                         text: "Change",
                         visuallyHiddenText: "get money from"
-
-                }
-                ]
-            }
-            },
-            {
-                key: {
-                    text: "Have more than £6,000 in savings"
-                },
-                value: {
-                    text: data['more-than-6000'] | capitalize
-                },
-                actions: {
-                    items: [
-                    {
-                        href: "more-than-6000",
-                        text: "Change",
-                        visuallyHiddenText: "more than £6,000 in savings"
 
                 }
                 ]

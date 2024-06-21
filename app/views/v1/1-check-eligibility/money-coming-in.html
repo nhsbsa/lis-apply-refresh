@@ -24,13 +24,11 @@ Do you get money from any of these?
             "href": "financial-support",
             "text": "Go back"
         }) }}
-        <form action="#ß" method="post">
           <span class="nhsuk-caption-l">Before you start</span>
-
 
         {% from 'checkboxes/macro.njk' import checkboxes %}
 
-<form>
+  <form action="money-coming-in" method="post">
   {{ checkboxes({
     idPrefix: "money-coming-in",
     name: "moneyComingIn",

@@ -24,13 +24,12 @@ Do you get financial support from any of these?
             "href": "education-or-training",
             "text": "Go back"
         }) }}
-        <form action="#ß" method="post">
           <span class="nhsuk-caption-l">Before you start</span>
 
 
         {% from 'checkboxes/macro.njk' import checkboxes %}
 
-<form>
+  <form action="financial-support" method="post">
   {{ checkboxes({
     idPrefix: "financial-support",
     name: "financialSupport",
