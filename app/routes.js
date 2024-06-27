@@ -53,7 +53,7 @@ router.post('/v1/1-check-eligibility/live-with-partner', function (request, resp
 });
 
 // who-is-applying.html
-router.post('/v1/who-is-applying', function (request, response) {
+router.post('/v1/2-personal-details/who-is-applying', function (request, response) {
     var applying = request.session.data['applying']
 
     if (applying == "myself") {
