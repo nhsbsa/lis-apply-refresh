@@ -64,7 +64,7 @@ router.post('/v1/2-personal-details/who-is-applying', function (request, respons
 });
 
 // have-phone-number.html
-router.post('/v1/have-phone-number', function (request, response) {
+router.post('/v1/3-contact-details/have-phone-number', function (request, response) {
     var phone = request.session.data['phone']
 
     if (phone == "yes") {
@@ -75,12 +75,12 @@ router.post('/v1/have-phone-number', function (request, response) {
 });
 
 // what-is-your-phone-number.html
-router.post('/v1/what-is-your-phone-number', function (request, response) {
+router.post('/v1/3-contact-details/what-is-your-phone-number', function (request, response) {
     response.redirect("have-email-address")
 });
 
 // have-email-address.html
-router.post('/v1/have-email-address', function (request, response) {
+router.post('/v1/3-contact-details/have-email-address', function (request, response) {
     var email = request.session.data['email']
 
     if (email == "yes") {
@@ -91,12 +91,12 @@ router.post('/v1/have-email-address', function (request, response) {
 });
 
 // what-is-your-email-address.html
-router.post('/v1/what-is-your-email-address', function (request, response) {
+router.post('/v1/3-contact-details/what-is-your-email-address', function (request, response) {
     response.redirect("check-your-answers-contact-details")
 });
 
 // who-to-contact.html
-router.post('/v1/who-to-contact', function (request, response) {
+router.post('/v1/3-contact-details/who-to-contact', function (request, response) {
     var whoContact = request.session.data['whoContact']
 
     if (whoContact == "them") {
@@ -107,7 +107,7 @@ router.post('/v1/who-to-contact', function (request, response) {
 });
 
 // they-have-phone-number.html
-router.post('/v1/they-have-phone-number', function (request, response) {
+router.post('/v1/3-contact-details/they-have-phone-number', function (request, response) {
     var theyPhone = request.session.data['theyPhone']
 
     if (theyPhone == "yes") {
@@ -118,12 +118,12 @@ router.post('/v1/they-have-phone-number', function (request, response) {
 });
 
 // what-is-their-phone-number.html
-router.post('/v1/what-is-their-phone-number', function (request, response) {
+router.post('/v1/3-contact-details/what-is-their-phone-number', function (request, response) {
     response.redirect("they-have-email-address")
 });
 
 // they-have-email-address.html
-router.post('/v1/they-have-email-address', function (request, response) {
+router.post('/v1/3-contact-details/they-have-email-address', function (request, response) {
     var theyEmail = request.session.data['theyEmail']
 
     if (theyEmail == "yes") {
@@ -134,7 +134,7 @@ router.post('/v1/they-have-email-address', function (request, response) {
 });
 
 // what-is-their-email-address.html
-router.post('/v1/what-is-their-email-address', function (request, response) {
+router.post('/v1/3-contact-details/what-is-their-email-address', function (request, response) {
     response.redirect("check-their-answers-contact-details")
 });
 
