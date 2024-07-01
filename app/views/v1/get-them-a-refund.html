@@ -31,7 +31,7 @@ Do they want to claim a refund for any NHS costs they've already paid?
         {% set theirName = "THEIR-NAME-HERE" %}
         {% endif %}
 
-        <form action="get-them-a-refund" method="post">
+        <form action="/v1/get-them-a-refund" method="post">
             <span class="nhsuk-caption-l">Get a refund</span>
             {{ radios({
                 "idPrefix": "refund",
