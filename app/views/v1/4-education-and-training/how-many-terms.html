@@ -30,9 +30,10 @@ Does your course have 3 terms this academic year?
 
         </h1>
        
-        <p class="nhsuk-body">Terms are not the same as semesters </p>
+        <p class="nhsuk-body">Terms are not the same as semesters.</p>
             <p class="nhsuk-body"> A list of term dates can usually be found online within the student portal or listed in the university or college's academic calendar. </p>
-           
+            <form action="how-many-terms" method="post">
+
             {% from 'radios/macro.njk' import radios %}
 
             {{ radios({
@@ -60,6 +61,8 @@ Does your course have 3 terms this academic year?
             {{ button({
                 "text": "Continue"
             }) }}
+
+            </form>
      
         <!-- End of content -->
 	</div>

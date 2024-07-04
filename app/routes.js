@@ -365,13 +365,13 @@ router.post('/v1/full-or-part-time', function (request, response) {
 });
 
 //how-many-terms.html
-router.post('/v1/how-many-terms', function (request, response) {
+router.post('/v1/4-education-and-training/how-many-terms', function (request, response) {
     var terms = request.session.data['terms']
 
     if (terms == "yes") {
-        response.redirect("v1/first-term-dates")
+        response.redirect("first-term-dates")
     } else {
-        response.redirect("v1/course-start")
+        response.redirect("course-start")
     }
 });
 
