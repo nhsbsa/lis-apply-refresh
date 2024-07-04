@@ -364,6 +364,17 @@ router.post('/v1/full-or-part-time', function (request, response) {
     }
 });
 
+//term-dates-correct.html
+router.post('/v1/4-education-and-training/term-dates-correct', function (request, response) {
+    var termDatesCorrect = request.session.data['term-dates-correct']
+
+    if (termDatesCorrect == "yes") {
+        response.redirect("course-final-year")
+    } else {
+        response.redirect("how-many-terms")
+    }
+});
+
 //how-many-terms.html
 router.post('/v1/4-education-and-training/how-many-terms', function (request, response) {
     var terms = request.session.data['terms']

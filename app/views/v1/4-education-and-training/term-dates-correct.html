@@ -119,6 +119,7 @@ Are your term dates correct?
   </table>
 
    <!-- Where to check your term dates --> 
+   <form action="term-dates-correct" method="post">
 
    {% from 'details/macro.njk' import details %}
 
@@ -139,7 +140,7 @@ Are your term dates correct?
   {% from 'radios/macro.njk' import radios %}
 
 {{ radios({
-  "idPrefix": "termDatesCorrect",
+  "idPrefix": "term-dates-correct",
   "name": "term-dates-correct",
   "classes": "nhsuk-radios--inline",
   "fieldset": {
@@ -167,6 +168,7 @@ Are your term dates correct?
             }) }}
     
         <!-- End of content -->
+   </form>
 	</div>
 </div>
 {% endblock %}
