@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-    Your application has been saved
+Your application has been saved
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -26,9 +26,10 @@
 {% endif %}
 
 <div class="nhsuk-grid-row">
-	<div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-two-thirds">
         <h1>Your application has been saved</h1>
-        <p>We have sent an email confirming this to <strong>{{ saveEmailAddress }}</strong>. The email also tells you how to return to your application.</p>
+        <p>We have sent an email confirming this to <strong>{{ saveEmailAddress }}</strong>. The email also tells you
+            how to return to your application.</p>
 
         <h2 class="nhsuk-heading-m">Application status</h2>
         <p>Your application has been saved, but has not been submitted.</p>
@@ -39,11 +40,12 @@
         "HTML": "<p>15 November 2023 10:58am</p>"
         }) }}
 
-        <p>You can close your browser. Or, if you want to continue your application now, return to the start page and select <strong>Continue an application</strong>.</p>
+        <p>You can close your browser. Or, if you want to continue your application now, return to the start page and
+            select <strong>Continue an application</strong>.</p>
 
-        <a href="start" class="nhsuk-button" role="button">Return to start page</a>
-        
+        <a href="/v1/0-start/start" class="nhsuk-button" role="button">Return to start page</a>
+
         <!-- End of content -->
-	</div>
+    </div>
 </div>
 {% endblock %}
