@@ -139,7 +139,7 @@ router.post('/v1/3-contact-details/what-is-their-email-address', function (reque
 });
 
 // get-a-refund.html
-router.post('/v1/get-a-refund', function (request, response) {
+router.post('/v1/16-submit-application/get-a-refund', function (request, response) {
     var refund = request.session.data['refund']
 
     if (refund == "yes") {
@@ -150,7 +150,7 @@ router.post('/v1/get-a-refund', function (request, response) {
 });
 
 // refund-type.html
-router.post('/v1/refund-type', function (request, response) {
+router.post('/v1/16-submit-application/refund-type', function (request, response) {
     response.redirect("declaration")
 });
 
@@ -158,7 +158,7 @@ router.post('/v1/refund-type', function (request, response) {
 // The done page on test site seems to be broken / faulty but would go here
 
 // get-them-a-refund.html
-router.post('/v1/get-them-a-refund', function (request, response) {
+router.post('/v1/16-submit-application/get-them-a-refund', function (request, response) {
     var themRefund = request.session.data['themRefund']
 
     if (themRefund == "yes") {
@@ -169,7 +169,7 @@ router.post('/v1/get-them-a-refund', function (request, response) {
 });
 
 // their-refund-type.html
-router.post('/v1/their-refund-type', function (request, response) {
+router.post('/v1/16-submit-application/their-refund-type', function (request, response) {
     response.redirect("their-declaration")
 });
 

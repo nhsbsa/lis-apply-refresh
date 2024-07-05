@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Do they want to claim a refund for any NHS costs they've already paid?
+Do you want to claim a refund for any NHS costs you've already paid?
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -21,30 +21,24 @@ Do they want to claim a refund for any NHS costs they've already paid?
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
         {{ backLink({
-            "href": "their-application-progress-3",
+            "href": "your-application-progress-3",
             "text": "Go back"
         }) }}
 
-        {% if data['theirFirstName'] %}
-        {% set theirName = data['theirFirstName'] %}
-        {% else %}
-        {% set theirName = "THEIR-NAME-HERE" %}
-        {% endif %}
-
-        <form action="/v1/get-them-a-refund" method="post">
+        <form action="get-a-refund" method="post">
             <span class="nhsuk-caption-l">Get a refund</span>
             {{ radios({
                 "idPrefix": "refund",
-                "name": "themRefund",
+                "name": "refund",
                 "fieldset": {
                     "legend": {
-                        "text": "Does " + theirName | capitalize + " want to claim a refund for any NHS costs they've already paid?",
+                        "text": "Do you want to claim a refund for any NHS costs you've already paid?",
                         "classes": "nhsuk-fieldset__legend--l",
                         "isPageHeading": true
                     }
                 },
                 "hint": {
-                    "text": "Refunds have to be claimed within 3 months of the date " + theirName | capitalize + " paid the charge or had a sight test."
+                    "text": "Refunds have to be claimed within 3 months of the date you paid the charge or had a sight test."
                   },
                 "items": [
                 {
