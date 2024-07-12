@@ -353,19 +353,6 @@ router.post('/v1/1-check-eligibility/more-than-6000-2', function (request, respo
 });
 
 
-//full-or-part-time.html
-
-router.post('/v1/4-education-and-training/full-or-part-time', function (request, response) {
-    var full = request.session.data['full']
-
-    if (full == "yes") {
-        response.redirect("v1/name-of-establishment")
-    } else {
-        response.redirect("v1/name-of-establishment")
-    }
-});
-
-
 //term-dates-correct.html
 router.post('/v1/4-education-and-training/term-dates-correct', function (request, response) {
     var termDatesCorrect = request.session.data['term-dates-correct']
