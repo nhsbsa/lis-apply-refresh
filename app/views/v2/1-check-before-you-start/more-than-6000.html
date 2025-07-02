@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Do you have more than £6,000 in savings, investments or property?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+        <form action="more-than-6000" method="post">
+            <span class="nhsuk-caption-l">Before you start</span>
+            {{ radios({
+                "idPrefix": "more-than-6000",
+                "name": "moreThan6000",
+                "fieldset": {
+                "legend": {
+                    "text": "Do you have more than £6,000 in savings, investments or property?",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    "isPageHeading": true
+                }
+                },
+
+                hint: {
+                    text: "Do not include the property you live in.
+
+                        Do not include any student maintenance funding in 
+                        your calculation, such as maintenance loans, grants, bursaries, scholarships and sponsorships intended to help you with your daily living costs."
+                },
+                "items": [
+                {
+                    "value": "yes",
+                    "text": "Yes"
+                },
+                {
+                    "value": "no",
+                    "text": "No"
+                }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

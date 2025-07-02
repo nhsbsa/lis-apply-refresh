@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  How much State Pension do you get every week?
+{% endblock %}
+
+<!-- For the skip link -->
+{% block skipLink %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+<style>
+  /* new skip link format*/
+.nhsuk-skip-link:focus {
+  display: block;
+  position: static;
+}
+</style>
+
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+
+
+        <!-- <form action="sight-impaired" method="post"> -->
+          <span class="nhsuk-caption-l">Pensions (state, work, private)</span>
+          <h1 class="nhsuk-heading-l">How much State Pension do you get every week?</h1>
+          
+          <p class="nhsuk-hint">The amount must include pence. For example, £146.20</p>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="example">
+              Amount
+            </label>
+            <div class="nhsuk-input__prefix custom-prefix" aria-hidden="true">
+              £
+            </div>            
+              <input class="nhsuk-input nhsuk-input--width-10" id="example" name="example" type="text">
+            </div>
+          </div>
+
+
+          <style>
+            .custom-prefix {
+              display: inline-flex;
+              font-size: 18px;
+              margin-right: -7px;
+              background-color: #d8dde0;
+              padding: 5px 12px 4px 12px;
+              border: 2px solid #4c6272;
+            }
+            </style>
+            
+	</div>
+  
+      {{ button({
+        "text": "Continue"
+    }) }}
+
+</div>
+{% endblock %}

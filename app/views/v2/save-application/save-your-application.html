@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    Save your application
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Saving your application for later</span>
+        <h1 class="nhsuk-heading-l">Save your application so you can come back to it later</h1>
+
+        <p class="nhsuk-margin-bottom-0">We will ask for your date of birth and an email address you have access to.</p>
+
+        {{ insetText({
+        "HTML": "<p>We will save your application for 14 days. If you do not complete it within 14 days, you will need to start again.</p>"
+        }) }}
+
+        <a href="date-of-birth-save" class="nhsuk-button" role="button">Continue</a>
+        
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

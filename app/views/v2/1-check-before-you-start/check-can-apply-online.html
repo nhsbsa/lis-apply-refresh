@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check if you can apply online for help with NHS costs - Apply online for help with NHS costs
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+
+        <span class="nhsuk-caption-l">Before you start</span>
+		<h1 class="nhsuk-heading-l">
+			Check if you can apply online for help with NHS costs
+		</h1>
+
+        <p>We will now ask you 7 questions to make sure you can apply online at this time. As the service is still being developed, not everyone is currently able to apply online.</p>
+		<p>If you cannot apply online yet, you can still use the paper form, called an HC1.</p>
+
+        {{ details({
+            "text": "How to get an HC1 form",
+            "HTML": "
+                <p><strong>You can get an HC1 form:</strong></p>
+                <ul>
+                    <li>a local pharmacy</li>
+                    <li>your GP practice</li>
+                    <li>a local Jobcentre</li>
+                    <li>Citizens Advice</li>
+                </ul>
+                <p>You can also <a href=\"#\">go to our website to view more ways to get an HC1 (opens in a new tab)</a> depending on which country you live in. Select How to apply (HC1 form).    
+            "
+            }) }}
+
+        <a href="which-country-do-you-live-in" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

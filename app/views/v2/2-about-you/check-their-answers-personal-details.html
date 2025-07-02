@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "their-nhs-number",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Apply for help with NHS costs</span>
+        <h1 class="nhsuk-heading-l">Check your answers</h1>
+
+        <h2 class="nhsuk-heading-m">Personal details</h2>
+
+        <!-- Logic for what to display for NHS number in summary list component -->
+        {% if data['yesNhsNumber'] %}
+            {% set nhsNumber = data['yesNhsNumber'] %}
+        {% else %}
+            {% set nhsNumber = "No" %}
+        {% endif %}
+        <!-- End -->
+
+        {{ summaryList({
+        rows: [
+            {
+            key: {
+                text: "Full name"
+            },
+            value: {
+                text: data['theirFirstName'] | capitalize + ' ' + data['theirMiddleName'] | capitalize + ' ' + data['theirLastName'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "what-is-their-name",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Date of birth"
+            },
+            value: {
+                text: "26 June 1992"
+            },
+            actions: {
+                items: [
+                {
+                    href: "their-date-of-birth",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Address"
+            },
+            value: {
+                html: "<p>123 Fake street,<br>Newcastle,<br>NE12 3AB</p>"
+            },
+            actions: {
+                items: [
+                {
+                    href: "what-is-their-address",
+                    text: "Change",
+                    visuallyHiddenText: "address"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "NHS number"
+            },
+            value: {
+                text: nhsNumber
+            },
+            actions: {
+                items: [
+                {
+                    href: "their-nhs-number",
+                    text: "Change",
+                    visuallyHiddenText: "NHS number"
+                }
+                ]
+            }
+            }
+        ]
+        }) }}
+
+        <a href="their-application-progress-2" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

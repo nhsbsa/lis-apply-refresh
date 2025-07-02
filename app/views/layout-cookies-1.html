@@ -1,0 +1,73 @@
+<!-- 
+  This is the main layout where you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+    
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+  
+<div class="nhsuk-success-banner" id="nhsuk-cookie-confirmation-banner" style="background-color: #007f3b; color: white; padding: 10px 0; text-align: center; display: block; width: 100%; box-sizing: border-box;">
+  <div class="nhsuk-width-container" style="text-align: left;">
+    <p id="nhsuk-success-banner__message" style="margin: 0; line-height: 1.5;">
+      You can change your cookie settings at any time using our <a href="choose-cookies" style="color: white; text-decoration: underline;">cookies page</a>.
+    </p>
+  </div>
+</div>
+
+  {{ header({
+    "service": {
+        "name": "Apply online for help with NHS costs",
+        "href": "/"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/",
+        "label": "Home"
+      },
+      {
+        "URL": "/page-example",
+        "label": "Example page"
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

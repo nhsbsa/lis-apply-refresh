@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Apply for help with NHS costs</span>
+        <h1 class="nhsuk-heading-l">Check your answers</h1>
+
+        <h2 class="nhsuk-heading-m">Contact details</h2>
+
+        <!-- Logic for what to display for NHS number in summary list component -->
+        {% if data['yesNhsNumber'] %}
+            {% set nhsNumber = data['yesNhsNumber'] %}
+        {% else %}
+            {% set nhsNumber = "No" %}
+        {% endif %}
+        <!-- End -->
+
+        <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Have phone number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['phone'] | capitalize }}
+              </dd>
+        
+              <dd class="nhsuk-summary-list__actions">
+                <a href="have-phone-number">
+                  Change<span class="nhsuk-u-visually-hidden"> have phone number</span>
+                </a>
+              </dd>
+            </div>
+          
+            {% if data['phone'] == 'yes' %}
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Phone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['phoneNumber'] }}
+                    
+                    {% if data['deaf'] == 'yes' %}
+                        <p>I'm deaf or hard of hearing and use a text relay service.</p>
+                    {% else %}
+                        <!-- Else show nothing -->
+                    {% endif %}
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="what-is-your-phone-number">
+                    Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+                    </a>
+                </dd>
+                </div>
+            {% else %}
+                <!-- If dont have phone number dont show next row -->
+            {% endif %}
+          
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Have email address
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['email'] | capitalize }}
+              </dd>
+          
+              <dd class="nhsuk-summary-list__actions">
+          
+                <a href="have-email-address">
+                  Change<span class="nhsuk-u-visually-hidden"> have email address</span>
+                </a>
+          
+              </dd>
+          
+            </div>
+
+            {% if data['email'] == 'yes' %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Email address
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                    {{ data['emailAddress'] }}
+                    </dd>
+                
+                    <dd class="nhsuk-summary-list__actions">
+                
+                    <a href="what-is-your-email-address">
+                        Change<span class="nhsuk-u-visually-hidden"> email address</span>
+                    </a>
+                
+                    </dd>
+                </div>
+            {% else %}
+                <!-- If dont have email address dont show next row -->
+            {% endif %}
+          </dl>
+
+        <a href="your-application-progress-3" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

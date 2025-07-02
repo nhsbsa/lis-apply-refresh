@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+What is their email address?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "they-have-email-address",
+            "text": "Go back"
+        }) }}
+
+        {% if data['theirFirstName'] %}
+        {% set theirName = data['theirFirstName'] %}
+        {% else %}
+        {% set theirName = "THEIR-NAME-HERE" %}
+        {% endif %}
+
+        <span class="nhsuk-caption-l">Contact details</span>
+        <h1 class="nhsuk-heading-l">What is {{ theirName | capitalize }}'s email address?</h1>
+
+        <p class="nhsuk-hint">For example, myname@example.com</p>
+        
+        <form action="what-is-their-email-address" method="post">
+            {{ input({
+            "label": {
+                "text": "Email address"
+            },
+            "id": "email-address",
+            "name": "theirEmailAddress",
+            "classes": "nhsuk-input--width-20",
+            "value": data['theirEmailAddress']
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

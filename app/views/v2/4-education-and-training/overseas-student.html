@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Are you an overseas student?
+
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "term-dates-correct",
+            "text": "Go back"
+        }) }}
+
+        <form action="check-your-answers-education-training-details" method="post">
+            <span class="nhsuk-caption-l">Education and training</span>
+            <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    Are you an overseas student?
+                  </h1>
+                </legend>
+              
+                <div class="nhsuk-hint nhsuk-u-margin-bottom-2">
+                    Select <strong> No </strong> if you are from Northen Ireland.
+                </div>
+        
+              
+                <div class="nhsuk-form-group">
+              
+                  <div class="nhsuk-radios">
+              
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-hints-1" name="example-hints" type="radio" value="yes">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
+                     Yes
+                      </label>
+                    </div>
+              
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-hints-2" name="example-hints" type="radio" value="no">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                        No
+                      </label>
+                    </div>
+            
+              
+                  </div>
+                </div>
+              
+              </fieldset>
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

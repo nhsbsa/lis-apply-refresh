@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  What type of Pension Credit do you get?
+{% endblock %}
+
+<!-- For the skip link -->
+{% block skipLink %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+<style>
+  /* new skip link format*/
+.nhsuk-skip-link:focus {
+  display: block;
+  position: static;
+}
+</style>
+
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+
+
+        <!-- <form action="sight-impaired" method="post"> -->
+          <span class="nhsuk-caption-l">Income and other money</span>
+          <h1 class="nhsuk-heading-l">What type of Pension Credit do you get?</h1>
+          <p>Pension Credit is a benefit with 2 parts - Guarantee Credit and Savings Credit.</p>
+
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                I'm not sure what type I get
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+          
+              <h2 class="nhsuk-heading-s">Check your benefit payment letter</h2>
+              
+              <h3 class="nhsuk-heading-xs">Guarantee Credit</h3>
+              <p>Guarantee Credit tops up your weekly income if it's below {{ data.MinimumSingleGuaranteeCredit }}.</p>
+
+              <h3 class="nhsuk-heading-xs">Savings Credit</h3>
+              <p>Savings Credit is an extra payment for people who have saved some money towards their retirement, for example a pension.</p>
+
+              <p>The most you can get in Savings Credit per week is {{ data.MaximumSingleSavingsCredit }} a week.</p>
+              
+              <p>If you're still unsure contact the <a href="">Pension Service helpline (opens in new tab)</a>.</p>
+
+          
+            </div>
+          </details>
+
+
+            {{ radios({
+              "idPrefix": "pension-credit-type",
+              "name": "pension-credit-type",
+              "fieldset": {
+
+              },
+                "items": [
+                {
+                    "value": "guaranteeCreditOnly",
+                    "text": "Guarantee Credit only"
+                },
+                {
+                    "value": "guaranteeCreditWithSavingsCredit",
+                    "text": "Guarantee Credit with Savings Credit"
+                },
+                {
+                    "value": "savingsCredit",
+                    "text": "Savings Credit"
+                }
+                ]
+            }) }}
+      
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        <!-- </form> -->
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

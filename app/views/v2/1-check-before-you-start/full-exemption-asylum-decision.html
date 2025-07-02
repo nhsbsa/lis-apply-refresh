@@ -1,0 +1,131 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Full Exemption Asylum Decision
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+    {{ backLink({
+      "href": 'javascript:history.go(-1);',
+      "text": "Go back"
+  }) }}
+       
+       
+        <!--code from MATEX-->
+
+        <div class="content">
+            <div class="indextext">
+              <div class="done-panel">
+               
+              
+                <p class="nhsuk-body-l">Based on what you've told us </p>
+                <h1 class="nhsuk-heading-l">You get help with NHS costs and do not need to apply</h1>
+              
+              </div>
+              <p class="nhsuk-body">Because you get Section 95 asylum support, you are entitled to help.</p>
+                <h2 class="nhsuk-heading-m">
+                  How to get your help
+
+                </h2>
+                
+                <p class="nhsuk-body">You will be issued with an HC2 certificate by the NHS Business Services Authority. This will be sent with 21 days of you receiving your support letter from UK Visas and Immigration(UKVI).
+
+                </a></p>
+                <p class="nhsuk-body"> Your certificate lasts for 6 months. You will get a renewed certificate after this if you are still getting Section 95 asylum support. </p>
+               
+              <div class="nhsuk-u-padding-bottom-"></div>
+              <div class="nhsuk-u-padding-bottom-3"></div>
+             
+              <h2 class="nhsuk-heading-m">
+                If you do not have an HC2
+              </h2>
+
+              <p class="nhsuk-body"> If you do not have an HC2 or it has expired, you need to contact Migrant Help UK on 0808 801 0503. </p>
+             <hr>
+
+    
+  <h2 class="heading-medium">
+        
+    What you'll get
+  
+        </h2>
+        <h3 class="heading-medium">
+
+          You get free:
+        
+              </h3>
+
+  <ul class="nhsuk-list nhsuk-list--tick" role="list">
+    <li>
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+        <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12" stroke="#007f3b"></path>
+      </svg>
+      NHS prescriptions
+    </li>
+    <li>
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+        <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12" stroke="#007f3b"></path>
+      </svg>
+      NHS dental check-ups and treatment
+    </li>
+    <li>
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+        <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12" stroke="#007f3b"></path>
+      </svg>
+      sight tests
+    </li>
+    <li>
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+        <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12" stroke="#007f3b"></path>
+      </svg>
+      NHS wigs and fabric supports
+    </li>
+  </ul>
+
+  <h3 class="heading-medium">
+
+      You get money off:
+    
+          </h3>
+
+          <ul class="nhsuk-list nhsuk-list--tick" role="list">
+            <li>
+              <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12" stroke="#007f3b"></path>
+              </svg>
+              new glasses or contact lenses
+            </li>
+            <li>
+              <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12" stroke="#007f3b"></path>
+              </svg>
+              repairing or replacing your glasses or contact lenses
+            </li>
+            <li>
+              <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12" stroke="#007f3b"></path>
+              </svg>
+              travel for NHS treatment
+            </li>
+            
+          </ul>
+        
+        </div>
+      </div>
+    
+{% endblock %}

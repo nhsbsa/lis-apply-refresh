@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+What is the name of your school, college or university?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "name-of-establishment",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Education and training </span>
+        <h1 class="nhsuk-heading-l">What qualification level is your course?</h1>
+        <p class="nhsuk-body">We will ask what subject you are studying on the next screen.</p>
+        <div class="nhsuk-hint" id="contact-hint">
+            For example, BA (Hons) or NVQ Level 3.
+          </div>
+        
+        <form action="subject" method="post">
+        
+            {{ input({
+                
+            "label": {
+                "text": "Qualification level"},
+            
+            "id": "qualification-level",
+       
+            "name": "qualificationLevel",
+            "classes": "nhsuk-input--width-20",
+            "value": data['qualificationLevel'] | capitalize
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

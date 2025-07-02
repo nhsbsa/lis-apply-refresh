@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  Enter access code - Apply online for help with NHS costs
+{% endblock %}
+
+<!-- For the skip link -->
+{% block skipLink %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+<style>
+  /* new skip link format*/
+.nhsuk-skip-link:focus {
+  display: block;
+  position: static;
+}
+</style>
+
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+
+
+        {% set errorType = error or "" %}
+        {% set errors = [] %}
+        {% set errorMessage = null %}
+        
+        {% if errorType == "empty" %}
+          {% set errors = [{ text: "Enter a valid 6-digit code", href: "#example-email" }] %}
+          {% set errorMessage = { text: "Enter a valid 6-digit code" } %}
+        {% elif errorType == "invalid" %}
+          {% set errors = [{ text: "Code must be 6 digits and only numbers", href: "#example-email" }] %}
+          {% set errorMessage = { text: "Code must be 6 digits and only numbers" } %}
+        {% elif errorType == "incorrect" %}
+          {% set errors = [{ text: "The code you entered is incorrect. Try again", href: "#example-email" }] %}
+          {% set errorMessage = { text: "The code you entered is incorrect. Try again" } %}
+        {% endif %}
+        
+
+
+
+        <form action="email-address-continue" method="post">
+
+          {% if errors.length %}
+          {{ errorSummary({
+            titleText: "There is a problem",
+            errorList: errors
+          }) }}
+        {% endif %}
+
+          <span class="nhsuk-caption-l">Continue application</span>
+          <h1 class="nhsuk-heading-l">Enter access code</h1>
+
+          <p>We've sent a 6-digit code to <strong>janedoe@mail.com</strong>. You have 30 minutes to enter or copy and paste this code to continue your application.</p>
+
+          <p>The code may take a few minutes to arrive. Check your junk folder if you cannot see the email in your inbox.</p>
+
+
+          {{ input({
+            label: {
+                text: "Code"
+            },
+            id: "example-email",
+            name: "example-email",
+            classes: "nhsuk-input--width-10",
+            errorMessage: errorMessage
+          }) }}
+      
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+
+            <p>If you have not received a code after 10 minutes, you can <a href="">request a new code</a>.</p>
+
+            <p>If you do not have access to this email address, you will need to <a href="/v2/1-check-before-you-start/apply-online">start a new application</a>.</p>
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

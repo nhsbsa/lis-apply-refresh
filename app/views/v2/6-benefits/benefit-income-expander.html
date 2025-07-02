@@ -1,0 +1,332 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Are you applying for you or someone else?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Income and other money</span>
+        <h1 class="nhsuk-fieldset__legend--l">
+            Do you get any of these benefits?
+        </h1>
+        <p>We will only ask about benefits that can affect the outcome of your application.</p>
+        <p>Select all options that are relevant to you.</p>
+
+        <form action="who-is-applying" method="post">
+
+            <!-- ----------- Unemployment benefits ---------- -->
+
+            <details class="nhsuk-details nhsuk-expander" open>
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Unemployment benefits
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                            <div class="nhsuk-checkboxes">
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="" name="tax-credit-type" type="checkbox"
+                                        value="WTCandCTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
+                                        Jobseekers Allowance (JSA)
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ---------- Disability, illness and carer benefits ---------- -->
+
+            <details class="nhsuk-details nhsuk-expander" open>
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Disability, illness and carer benefits
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                            <div class="nhsuk-checkboxes">
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
+                                        type="checkbox" value="WTCandCTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
+                                        Working Tax Credit and Child Tax Credit together
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC-Disability" name="tax-credit-type"
+                                        type="checkbox" value="WTC-Disability">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC-Disability">
+                                        Working Tax Credit on its own, including a disability element
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="CTC" name="tax-credit-type"
+                                        type="checkbox" value="CTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
+                                        Child Tax Credit on its own
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Working Tax Credit on its own
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Working Tax Credit on its own
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Working Tax Credit on its own
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Working Tax Credit on its own
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Working Tax Credit on its own
+                                    </label>
+                                </div><br>
+                                <h4>Benefits for Scotland only</h4>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Child disability payment (CDP)
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Pension age disability payment
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Carer Support Payment
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ---------- Disability, illness and carer benefits ---------- -->
+
+            <details class="nhsuk-details nhsuk-expander" open>
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Scotland only - Disability, illness and carer benefits
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                            <div class="nhsuk-checkboxes">
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Child Disability Payment (CDP)
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Pension Age Disability Payment
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Carer Support Payment
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ---------- Armed forces disability benefits ---------- -->
+
+            <details class="nhsuk-details nhsuk-expander" open>
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Armed forces disability benefits
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                            <div class="nhsuk-checkboxes">
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
+                                        type="checkbox" value="WTCandCTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
+                                        Working Tax Credit and Child Tax Credit together
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC-Disability" name="tax-credit-type"
+                                        type="checkbox" value="WTC-Disability">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC-Disability">
+                                        Working Tax Credit on its own, including a disability element
+                                    </label>
+                                </div>
+                                <div class="nhsuk-radios__item">
+                                    <input class="nhsuk-checkboxes__input" id="CTC" name="tax-credit-type"
+                                        type="checkbox" value="CTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
+                                        Child Tax Credit on its own
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ---------- Death and bereavement benefits ---------- -->
+
+            <details class="nhsuk-details nhsuk-expander" open>
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Death and bereavement benefits
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                            <div class="nhsuk-checkboxes">
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
+                                        type="checkbox" value="WTCandCTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
+                                        Working Tax Credit and Child Tax Credit together
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC-Disability" name="tax-credit-type"
+                                        type="checkbox" value="WTC-Disability">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC-Disability">
+                                        Working Tax Credit on its own, including a disability element
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="CTC" name="tax-credit-type"
+                                        type="checkbox" value="CTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
+                                        Child Tax Credit on its own
+                                    </label>
+                                </div>
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
+                                        type="checkbox" value="WTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
+                                        Working Tax Credit on its own
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ---------- Maternity Benefits ---------- -->
+
+            <details class="nhsuk-details nhsuk-expander" open>
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Maternity Benefits
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                            <div class="nhsuk-checkboxes">
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
+                                        type="checkbox" value="WTCandCTC">
+                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
+                                        Working Tax Credit and Child Tax Credit together
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </details>
+
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                    <div class="nhsuk-checkboxes">
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="" name="tax-credit-type" type="checkbox"
+                                value="WTCandCTC">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
+                                No, I do not get any of these benefits
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

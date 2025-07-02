@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    What is your phone number?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "have-phone-number",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Contact details</span>
+        <h1 class="nhsuk-heading-l">What is your phone number?</h1>
+
+        <p class="nhsuk-hint">This can be a UK mobile or landline number.</p>
+        
+        <form action="what-is-your-phone-number" method="post">
+            {{ input({
+            "label": {
+                "text": "Phone number"
+            },
+            "id": "phone-number",
+            "name": "phoneNumber",
+            "classes": "nhsuk-input--width-20",
+            "value": data['phoneNumber']
+            }) }}
+
+            {{ checkboxes({
+                "idPrefix": "deaf",
+                "name": "deaf",
+                "fieldset": {
+                  "legend": {
+                    "text": "I'm deaf or hard of hearing and use a text relay service.",
+                    "classes": "nhsuk-u-visually-hidden",
+                    isPageHeading: false
+                  }
+                },
+                "items": [
+                  {
+                    "value": "yes",
+                    "text": "I'm deaf or hard of hearing and use a text relay service."
+                  }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

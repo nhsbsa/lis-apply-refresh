@@ -1,0 +1,174 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Are your term dates correct?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "subject",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Education and training </span>
+        <h1 class="nhsuk-heading-l">Are your term dates correct?</h1>
+        {% from 'warning-callout/macro.njk' import warningCallout %}
+
+        {{ warningCallout({
+          "heading": "Term dates",
+          "HTML": "<p> We need the term dates for your current academic year. These dates help us to calculate what help 
+            you're entitled to, so it is important that they are accurate. </p>"
+        }) }}
+
+        {% from 'inset-text/macro.njk' import insetText %}
+
+
+<div class="nhsuk-inset-text">
+    <span class="nhsuk-u-visually-hidden">Information: </span>
+    <p>As you're studying at {{ data['name-of-establishment'] }}, we think your term dates are:</p>
+  </div>
+
+  <!-- Term 1 table --> 
+  <table class="nhsuk-table">
+   
+    <thead role="rowgroup" class="nhsuk-table__head">
+      <tr role="row">
+        <th role="columnheader" class="" scope="col">
+         Term 1
+        </th>
+        <th role="columnheader" class="" scope="col">
+          
+        </th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">Start date: </td>
+        <td class="nhsuk-table__cell ">25 September 2023 </td>
+      </tr>
+      <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">End date: </td>
+        <td class="nhsuk-table__cell ">22 December 2023 </td>
+      </tr>
+    </tbody>
+  </table>
+
+   <!-- Term 2 table --> 
+  <table class="nhsuk-table">
+   
+    <thead role="rowgroup" class="nhsuk-table__head">
+      <tr role="row">
+        <th role="columnheader" class="" scope="col">
+         Term 2
+        </th>
+        <th role="columnheader" class="" scope="col">
+          
+        </th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">Start date: </td>
+        <td class="nhsuk-table__cell ">15 January 2024  </td>
+      </tr>
+      <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">End date: </td>
+        <td class="nhsuk-table__cell ">22 March 2024 </td>
+      </tr>
+    </tbody>
+  </table>
+
+ <!-- Term 3 table --> 
+  <table class="nhsuk-table">
+   
+    <thead role="rowgroup" class="nhsuk-table__head">
+      <tr role="row">
+        <th role="columnheader" class="" scope="col">
+         Term 3
+        </th>
+        <th role="columnheader" class="" scope="col">
+          
+        </th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">Start date: </td>
+        <td class="nhsuk-table__cell ">15 April 2024  </td>
+      </tr>
+      <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">End date: </td>
+        <td class="nhsuk-table__cell ">7 June 2024 </td>
+      </tr>
+    </tbody>
+  </table>
+
+   <!-- Where to check your term dates --> 
+   <form action="term-dates-correct" method="post">
+
+   {% from 'details/macro.njk' import details %}
+
+{{ details({
+  "text": "Where to check your term dates",
+  "HTML": "
+  <p>You can find your term dates: </p>
+  
+    <ul>
+        <li>on your university or college's online portal or website </li>
+        <li>in your offer or acceptance letter </li>
+        <li>hospital referral letters</li>
+        <li> by contacting Student Services at your college or university </li>
+    </ul>
+  "
+}) }}
+
+  {% from 'radios/macro.njk' import radios %}
+
+{{ radios({
+  "idPrefix": "term-dates-correct",
+  "name": "term-dates-correct",
+  "classes": "nhsuk-radios--inline",
+  "fieldset": {
+    "legend": {
+      
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+    {
+      "value": "yes",
+      "text": "Yes"
+    },
+    {
+      "value": "no",
+      "text": "No"
+    }
+  ]
+
+
+}) }}
+            {{ button({
+                "text": "Continue"
+            }) }}
+    
+        <!-- End of content -->
+   </form>
+	</div>
+</div>
+{% endblock %}

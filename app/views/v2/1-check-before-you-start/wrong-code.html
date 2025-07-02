@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+The access code has been entered incorrectly too many times
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-l">
+			The access code has been entered incorrectly too many times
+		</h1>
+
+        <p>For privacy reasons, you will need to <a href="/v2/1-check-before-you-start/apply-online">start a new application</a>.</p>
+        
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

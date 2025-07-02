@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+When does your third term date start and end?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "second-term-dates",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Education and training </span>
+        <h1 class="nhsuk-heading-l"> When does your third term date start and end? </h1>
+       
+        <p class="nhsuk-body"> If you're not sure what your term dates are, visit your student portal, or your college or university's website. </p>
+        
+        <form action="course-final-year" method="post">
+        
+            {% from 'date-input/macro.njk' import dateInput %}
+
+            {{ dateInput({
+              "id": "third-terms",
+              "namePrefix": "thirdTerms",
+              "fieldset": {
+                "legend": {
+                  "text": "Term 1 start date",
+                  "classes": "nhsuk-label--s",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 20 4 2024"
+              },
+              "items": [
+                {
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2"
+                },
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2"
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4"
+                }
+              ]
+            }) }}
+
+
+
+            {{ dateInput({
+                "id": "third-terms",
+                "namePrefix": "thirdTerms",
+                "fieldset": {
+                  "legend": {
+                    "text": "Term 1 end date",
+                    "classes": "nhsuk-label--s",
+                    "isPageHeading": true
+                  }
+                },
+                "hint": {
+                  "text": "For example, 5 6 2024"
+                },
+                "items": [
+                  {
+                    "name": "day",
+                    "classes": "nhsuk-input--width-2"
+                  },
+                  {
+                    "name": "month",
+                    "classes": "nhsuk-input--width-2"
+                  },
+                  {
+                    "name": "year",
+                    "classes": "nhsuk-input--width-4"
+                  }
+                ]
+              }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

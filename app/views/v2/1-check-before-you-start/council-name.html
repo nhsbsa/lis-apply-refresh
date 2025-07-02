@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    What is the name of the council that helps to pay for your care home?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Before you start</span>
+        <h1 class="nhsuk-heading-l">What is the name of the council that helps to pay for your care home?</h1>
+        
+        <form action="check-your-answers-eligibility" method="post">
+            {{ input({
+            "label": {
+                "text": "Council name"
+            },
+            "id": "council-name",
+            "name": "councilName",
+            "classes": "nhsuk-input--width-20",
+            "value": data['councilName'] | capitalize
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

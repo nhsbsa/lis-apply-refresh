@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Are you certified as severely sight impaired or registered blind?{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "nhs-number",
+            "text": "Go back"
+        }) }}
+
+
+        <form action="check-your-answers-personal-details" method="post">
+            <span class="nhsuk-caption-l">Personal details</span>
+            {{ radios({
+                "idPrefix": "sight",
+                "name": "sight",
+                "fieldset": {
+                    "legend": {
+                        "text": "Are you certified as severely sight impaired or registered blind?",
+                        "classes": "nhsuk-fieldset__legend--l",
+                        "isPageHeading": true
+                    }
+                },
+                
+                "items": [
+                {
+                    "value": "yes",
+                    "text": "Yes"
+                },
+                {
+                    "value": "no",
+                    "text": "No"
+                }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

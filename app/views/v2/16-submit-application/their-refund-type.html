@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Which of these NHS costs do they want to claim a refund for?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "get-them-a-refund",
+            "text": "Go back"
+        }) }}
+
+        {% if data['theirFirstName'] %}
+        {% set theirName = data['theirFirstName'] %}
+        {% else %}
+        {% set theirName = "THEIR-NAME-HERE" %}
+        {% endif %}
+
+        <form action="their-refund-type" method="post">
+            <span class="nhsuk-caption-l">Get a refund</span>
+            
+            {{ checkboxes({
+                "idPrefix": "refund-type",
+                "name": "theirRefundType",
+                "fieldset": {
+                "legend": {
+                    "text": "Which of these NHS costs does " + theirName | capitalize + " want to claim a refund for?",
+                    "classes": "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                }
+                },
+                "hint": {
+                "text": "Select all that apply."
+                },
+                "items": [
+                {
+                    "value": "prescriptions",
+                    "text": "NHS prescriptions"
+                },
+                {
+                    "value": "dental",
+                    "text": "NHS dental treatment"
+                },
+                {
+                    "value": "sight",
+                    "text": "Sight test"
+                },
+                {
+                    "value": "glasses",
+                    "text": "Glasses or contact lenses"
+                },
+                {
+                    "value": "wigs",
+                    "text": "NHS wigs or fabric supports"
+                },
+                {
+                    "value": "travel",
+                    "text": "Travel to receive NHS treatment"
+                }
+                ]
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

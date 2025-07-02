@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    What is their address?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "their-date-of-birth",
+            "text": "Go back"
+        }) }}
+
+        {% if data['theirFirstName'] %}
+            {% set name = data['theirFirstName'] %}
+        {% else %}
+            {% set name = "THEIR-NAME-HERE" %}
+        {% endif %}
+
+        <span class="nhsuk-caption-l">Personal details</span>
+        <h1 class="nhsuk-heading-l">What is {{ name | capitalize }}'s address?</h1>
+        
+        <form action="their-nhs-number" method="post">
+            {{ input({
+                "label": {
+                    "text": "Address line 1"
+                },
+                "id": "address-one",
+                "name": "theirAddressOne",
+                "classes": "nhsuk-input--width-20",
+                "value": data['theirAddressOne'] | capitalize
+            }) }}
+
+            {{ input({
+                "label": {
+                    "text": "Address line 2 (optional)"
+                },
+                "id": "address-two",
+                "name": "theirAddressTwo",
+                "classes": "nhsuk-input--width-20",
+                "value": data['theirAddressTwo'] | capitalize
+            }) }}
+
+            {{ input({
+                "label": {
+                    "text": "Town or city (optional)"
+                },
+                "id": "town-city",
+                "name": "theirTownCity",
+                "classes": "nhsuk-input--width-20",
+                "value": data['theirTownCity'] | capitalize
+            }) }}
+
+            {{ input({
+                "label": {
+                "text": "Postcode"
+                },
+                "id": "postcode",
+                "name": "theirPostcode",
+                "classes": "nhsuk-input--width-10",
+                "value": data['theirPostcode'] | capitalize
+            }) }}
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    I don't know what address to use
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p><strong>If {{ name | capitalize }} has more than one address</strong></p>
+                    <p>You should use the address that {{ name | capitalize }}'s GP or dentist holds for them. For example, if {{ name | capitalize }} is a student living away from home, this could be their home or term time address.</p>
+
+                    <p><strong>If {{ name | capitalize }} doesn't have a permanent address</strong></p>
+                    <p>If {{ name | capitalize }} is homeless and living in temporary accommodation (for example, a long term hostel), you should use the address that their GP or dentist holds for them.</p>
+                </div>
+            </details>
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+What is your email address?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "have-email-address",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Contact details</span>
+        <h1 class="nhsuk-heading-l">What is your email address?</h1>
+
+        <p class="nhsuk-hint">For example, myname@example.com</p>
+        
+        <form action="what-is-your-email-address" method="post">
+            {{ input({
+            "label": {
+                "text": "Email address"
+            },
+            "id": "email-address",
+            "name": "emailAddress",
+            "classes": "nhsuk-input--width-20",
+            "value": data['emailAddress']
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}
