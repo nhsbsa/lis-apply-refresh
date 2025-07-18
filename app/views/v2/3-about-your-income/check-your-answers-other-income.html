@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Apply for help with NHS costs</span>
+        <h1 class="nhsuk-heading-l">Check your answers</h1>
+
+        <h2 class="nhsuk-heading-m">Money from somewhere else</h2>
+
+        {% set howPayingForThingsList = '' %}
+        {% if data['howPayingForThings'] %}
+            {% for item in data['howPayingForThings'] %}
+                {% set capitalizedItem = item | capitalize %}
+                {% set howPayingForThingsList = howPayingForThingsList + capitalizedItem + '<br>' %}
+            {% endfor %}
+        {% endif %}
+
+
+
+        {{ summaryList({
+        rows: [
+            {
+            key: {
+                text: "How you're paying for things"
+            },
+            value: {
+                text: data['howPayingForThings'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "how-paying-for-things",
+                    text: "Change",
+                    visuallyHiddenText: "how you're paying for things"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "How much you spend each week from savings"
+            },
+            value: {
+                text: data['savings'] | capitalize
+            },
+            actions: {
+                items: [
+                {
+                    href: "amount-from-savings",
+                    text: "Change",
+                    visuallyHiddenText: "how much you spend each week from savings"
+                }
+                ]
+            }
+            },
+            {
+                key: {
+                    text: "How much you get each week from friends or relatives"
+                },
+                value: {
+                    text: data['friendsOrRelatives'] | capitalize
+                },
+                actions: {
+                    items: [
+                    {
+                        href: "amount-from-friends-relatives",
+                        text: "Change",
+                        visuallyHiddenText: "how much you get each week from friends or relatives"
+                    }
+                    ]
+                }
+                },
+                {
+                    key: {
+                        text: "How much you get each week in donations"
+                    },
+                    value: {
+                        text: data['donations'] | capitalize
+                    },
+                    actions: {
+                        items: [
+                        {
+                            href: "amount-from-donations",
+                            text: "Change",
+                            visuallyHiddenText: "how much you get each week in donations"
+                        }
+                        ]
+                    }
+                    }
+        ]
+        }) }}
+
+        <a href="your-application-progress-3" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+    </div>
+</div>
+{% endblock %}

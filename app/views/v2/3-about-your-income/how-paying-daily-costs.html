@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  How much (on average) do you get from friends or relatives each week?
+  How are you paying your daily living costs?
 {% endblock %}
 
 <!-- For the skip link -->
@@ -43,32 +43,25 @@
 
         <!-- <form action="sight-impaired" method="post"> -->
           <span class="nhsuk-caption-l">Money from somewhere else</span>
-          <h1 class="nhsuk-heading-l">How much (on average) do you get from friends or relatives each week?</h1>
+          <h1 class="nhsuk-heading-l">How are you paying your daily living costs?</h1>
           
-          <p class="nhsuk-hint">The amount must include pence. For example, £146.20</p>
+          <p class="nhsuk-hint">This might include paying for food, housing and travel. Tell us if someone else is providing these for you.</p>
 
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="example">
-              Amount
-            </label>
-            <div class="nhsuk-input__prefix custom-prefix" aria-hidden="true">
-              £
-            </div>            
-              <input class="nhsuk-input nhsuk-input--width-10" id="example" name="friendsOrRelatives" type="text">
+          <div class="nhsuk-character-count" data-module="nhsuk-character-count" data-maxlength="375">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="example">
+                How you are paying
+              </label>
+              <textarea class="nhsuk-textarea nhsuk-js-character-count" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
             </div>
+          
+            <div class="nhsuk-hint nhsuk-character-count__message" id="more-detail-info">
+              You can enter up to 375 characters
+            </div>
+          
           </div>
 
-
-          <style>
-            .custom-prefix {
-              display: inline-flex;
-              font-size: 18px;
-              margin-right: -7px;
-              background-color: #d8dde0;
-              padding: 5px 12px 4px 12px;
-              border: 2px solid #4c6272;
-            }
-            </style>
+  </div>
             
 	</div>
   
