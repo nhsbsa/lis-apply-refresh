@@ -787,4 +787,34 @@ router.post('/v2/1-check-before-you-start/date-of-birth-continue', function (req
 
 
 
+// how-paying-for-things.html
+router.post('/v2/3-about-your-income/how-paying-for-things', function (request, response) {
+    var howPayingForThings = request.session.data['howPayingForThings']
+    // console.log(moneyComingIn);
+
+    // If no checkboxes selected, stay on this page
+    if (howPayingForThings == null) {
+        response.redirect("how-paying-for-things")
+    }
+
+    // Store the array directly in session data for rendering
+    request.session.data['howPayingForThings'] = howPayingForThings;
+
+    // Look at each checkbox: if any one of them has the value 'cant-apply', send them to the Cannot Apply page
+    for (const checkbox of howPayingForThings) {
+        if (checkbox == "Money from friends or family") {
+            response.redirect("/v2/3-about-your-income/amount-from-friends-relatives")
+        }
+        if (checkbox == "Savings") {
+            response.redirect("/v2/3-about-your-income/amount-from-savings")
+        }
+        if (checkbox == "Donations from charity or voluntary organisations") {
+            response.redirect("/v2/3-about-your-income/amount-from-donations")
+        }
+    }
+
+    // Otherwise, no 'cant-apply' checkboxes were checked, so proceed to next page
+    response.redirect("how-paying-daily-costs")
+});
+
 module.exports = router;
