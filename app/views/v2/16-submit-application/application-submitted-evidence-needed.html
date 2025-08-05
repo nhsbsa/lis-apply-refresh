@@ -1,0 +1,148 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    Information needed
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+        <div class="nhsbsa-panel">
+            <div class="done-panel" style="background-color: #4c6272">
+            <h1 class="nhsuk-heading-xl" style="margin-bottom: 20px;">Information needed</h1>
+            <p class="nhsuk-body-l">Reference number
+                <br>
+                <strong>wq3z s42y</strong>
+            </p>
+        </div>
+
+        <div class="nhsuk-warning-callout">
+            <h3 class="nhsuk-warning-callout__label"> <span role="text">
+                <span class="nhsuk-u-visually-hidden">Important: </span>
+                Warning
+              </span> </h3>
+            <p>This page will expire in 30 minutes. Make a note of what information is needed, or <a href="p">print this page</a>.</p>
+          </div>
+
+        <h2 class="nhsuk-heading-m">What we need</h2>
+
+        <p>Before we can assess your application, you need to send us more information about your household income.</p>
+
+        <div class="nhsuk-card" style="border-width: 10px;">
+            <div class="nhsuk-card__content">
+              <table class="nhsuk-table">
+                <caption class="nhsuk-table__caption">Your payslips</caption>
+                <thead class="nhsuk-table__head">
+                  <tr>
+                    <th scope="col" class="nhsuk-table__header">Job title</th>
+                    <th scope="col" class="nhsuk-table__header">Evidence needed</th>
+                  </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+                  <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><strong>NHSBSA</strong></td>
+                    <td class="nhsuk-table__cell">Send us copies of your last 5 consecutive payslips leading up to <strong>{{ 1 | alterTodaysDateByNumberOfMonths }}</strong>.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            <div class="print-link" style="display: inline-flex;">
+                <i class="icon printer-icon" >
+                    <img src="/images/print_icon.png" style="width: 25px; margin-right: 20px;">
+                </i>
+                <p><a href="javascript:window.print();">Print this</a></p>
+            </div>
+            </div>
+          </div>
+
+
+        <h2 class="nhsuk-heading-m">Where to send documents</h2>
+
+        <p>Post copies of these documents to:</p>
+        <p><strong>LIS Returns (Ref: wq3z s42y)</strong>
+        <br>Bridge house
+        <br>152 Pilgrim Street
+        <br>Newcastle upon Tyne
+        <br>NE1 6SN
+        </p>
+
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Send this information by email
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+          
+                <p>We'll email details of how to send documents to us by email.</p>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="example-with-hint-text">
+                      Enter email address
+                    </label>
+                    <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                      For example, myname@example.com
+                    </div> <input class="nhsuk-input nhsuk-input--width-15" id="example-with-hint-text" name="example-with-hint-text" type="text" aria-describedby="example-with-hint-text-hint">
+                  </div>
+                  <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+                    Send
+                  </button>
+          
+              </div>
+            </details>
+          
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  I cannot send this information
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+          
+                <p>If you cannot send us the information required, your employer must fill in a 
+                  <a href="p">proof of income form (LIS 82) (opens in new tab)</a> 
+                  and send it to:
+                </p>
+
+                <p><strong>LIS Returns (Ref: wq3z s42y)</strong>
+                  <br>Bridge house
+                  <br>152 Pilgrim Street
+                  <br>Newcastle upon Tyne
+                  <br>NE1 6SN
+                  </p>
+          
+              </div>
+            </details>
+          
+
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+
+        <p>We'll review this application. 
+            We'll let you know the outcome by post.
+            This can take up to 15 working days.
+        </p>
+
+        <p>Help us to improve the service by <a href="a">answering some questions (opens in new tab)</a> about it.</p>
+
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

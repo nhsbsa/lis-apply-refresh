@@ -41,7 +41,7 @@
 
 
 
-        <!-- <form action="sight-impaired" method="post"> -->
+        <form action="/v2/3-about-your-income/amount-from-savings" method="post">
           <span class="nhsuk-caption-l">Money from somewhere else</span>
           <h1 class="nhsuk-heading-l">How much (on average) do you spend from your savings each week?</h1>
           
@@ -51,30 +51,19 @@
             <label class="nhsuk-label" for="example">
               Amount
             </label>
-            <div class="nhsuk-input__prefix custom-prefix" aria-hidden="true">
-              £
-            </div>            
-              <input class="nhsuk-input nhsuk-input--width-10" id="example" name="savings" type="text">
+            <div class="nhsuk-input__wrapper">
+              <div class="nhsuk-input__prefix" aria-hidden="true">£</div>
+              <input class="nhsuk-input nhsuk-input--width-10" name="savingsAmount" type="text">
             </div>
           </div>
 
-
-          <style>
-            .custom-prefix {
-              display: inline-flex;
-              font-size: 18px;
-              margin-right: -7px;
-              background-color: #d8dde0;
-              padding: 5px 12px 4px 12px;
-              border: 2px solid #4c6272;
-            }
-            </style>
-            
+                
+            {{ button({
+              "text": "Continue"
+          }) }}
+        </form>
+                
 	</div>
-  
-      {{ button({
-        "text": "Continue"
-    }) }}
 
 </div>
 {% endblock %}

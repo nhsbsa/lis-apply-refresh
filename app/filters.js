@@ -7,39 +7,40 @@ module.exports = function (env) { /* eslint-disable-line no-unused-vars */
    */
   const filters = {};
 
-  /* ------------------------------------------------------------------
-    add your methods to the filters obj below this comment block:
-    @example:
+  //
+  // ALTER DATE BY NUMBER OF MONTHS FILTER
+  //
+  filters.alterTodaysDateByNumberOfMonths = function( monthOffset ){
 
-    filters.sayHi = function(name) {
-        return 'Hi ' + name + '!'
+    let today = new Date();
+    var d = today.getDate();
+    today.setMonth(today.getMonth() + monthOffset);
+    if (today.getDate() !== d) {
+      today.setDate(0);
     }
 
-    Which in your templates would be used as:
+    return today.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric'
+    });
 
-    {{ 'Paul' | sayHi }} => 'Hi Paul'
+  };
 
-    Notice the first argument of your filters method is whatever
-    gets 'piped' via '|' to the filter.
 
-    Filters can take additional arguments, for example:
+    //
+  // ALTER DATE BY NUMBER OF DAYS FILTER
+  //
+  filters.alterTodaysDateByNumberOfDays = function( dayOffset ){
 
-    filters.sayHi = function(name,tone) {
-      return (tone == 'formal' ? 'Greetings' : 'Hi') + ' ' + name + '!'
-    }
+    let today = new Date();
+    today.setDate(today.getDate() + dayOffset);
 
-    Which would be used like this:
+    // Manually format the date to avoid leading zeros (day, month, year)
+    return [ today.getDate(), today.getMonth() + 1, today.getFullYear()].join(' '); 
 
-    {{ 'Joel' | sayHi('formal') }} => 'Greetings Joel!'
-    {{ 'Gemma' | sayHi }} => 'Hi Gemma!'
+  };
 
-    For more on filters and how to write them see the Nunjucks
-    documentation.
-
-  ------------------------------------------------------------------ */
-
-  /* ------------------------------------------------------------------
-    keep the following line to return your filters to the app
-  ------------------------------------------------------------------ */
+  
   return filters;
 };

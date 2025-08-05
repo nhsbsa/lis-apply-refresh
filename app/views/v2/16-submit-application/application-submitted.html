@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    Done
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+        <div class="nhsbsa-panel">
+            <div class="done-panel">
+            <h1 class="nhsuk-heading-xl" style="margin-bottom: 20px;">Done</h1>
+            <p class="nhsuk-body-l">Reference number
+                <br>
+                <strong>ev53 zm6d</strong>
+            </p>
+        </div>
+
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+
+        <p>You'll get an email from us within the next 24 hours confirming we've received your application.</p>
+
+        <p>We may email you asking for more information in the next few days while we assess your claim.
+            Check your emails regularly so that your application is not delayed.
+            Please check your junk and spam folder.
+        </p>
+
+        <p>We will then let you know the outcome of your application by email.</p>
+
+        <p>You are not eligible for free NHS prescriptions or treatment until you receive an outcome from us confirming your eligibility.
+            This can take up to 18 working days.
+        </p>
+
+
+        <h2 class="nhsuk-heading-m">What help you could get</h2>
+
+        <p>Depending on your circumstances, you may receive an</p>
+
+        <ul>
+            <li><a href="https://www.nhsbsa.nhs.uk/nhs-low-income-scheme/hc2-certificates-full-help-health-costs" target="_blank">HC2 certificate (opens in new tab)</a> for full help with health costs - this includes free NHS prescriptions</li>
+            <li><a href="https://www.nhsbsa.nhs.uk/nhs-low-income-scheme/hc3-certificates-limited-help-health-costs" target="_blank">HC3 certificate (opens in new tab)</a> for partial help with health costs - you would still need to pay something towards your health costs, and need to pay for NHS prescriptions in full</li>
+        </ul>
+
+        <h2 class="nhsuk-heading-m">How to apply for a refund</h2>
+
+        <p>If you pay NHS prescription charges, then find out later that you're entitled to free prescriptions, you may be able to claim a refund.</p>
+
+        <p>You'll need to ask your pharmacist for an FP57 refund receipt when you pay as you cannot get one later. Find out more about <a href="">how to claim a refund (opens in new tab)</a>.</p>
+
+        <p>If you are claiming a refund for a sight test, you need to claim within 3 months of the date you had the test. Find out <a href="">how to claim a refund (opens in new tab)</a>.</p>
+
+
+        <h2 class="nhsuk-heading-m">Contact us</h2>
+
+        <p>If you need help you can call us on 0300 330 1343.</p>
+
+        <p>We're open 8am to 6pm Monday to Friday, and 9am to 3pm on Saturday. Find out more about <a href="">call charges (opens in new tab)</a>.</p>
+
+        <p>Help us to improve the service by <a href="">answering some questions (opens in new tab)</a> about it.</p>
+
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

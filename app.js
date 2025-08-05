@@ -72,6 +72,13 @@ nunjucksAppEnv.addGlobal('version', packageInfo.version);
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv);
 
+nunjucksAppEnv.addFilter('currencyOnly', function (value) {
+  // if (!value) return "Not provided";
+  const number = parseFloat(value);
+  // if (isNaN(number)) return "Not provided";
+  return `£${number.toFixed(2)}`;
+});
+
 // Session uses service name to avoid clashes with other prototypes
 const sessionName = `nhsuk-prototype-kit-${(Buffer.from(config.serviceName, 'utf8')).toString('hex')}`;
 const sessionOptions = {

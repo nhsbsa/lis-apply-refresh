@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    Information needed
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": 'javascript:history.go(-1);',
+            "text": "Go back"
+        }) }}
+
+        <div class="nhsbsa-panel">
+            <div class="done-panel" style="background-color: #4c6272">
+            <h1 class="nhsuk-heading-xl" style="margin-bottom: 20px;">Information needed</h1>
+            <p class="nhsuk-body-l">Reference number
+                <br>
+                <strong>c4w5 x3et</strong>
+            </p>
+        </div>
+
+        <h2 class="nhsuk-heading-m">What we need</h2>
+
+        <p>Before we can assess your application, you need to send us more information about your household income.</p>
+
+        <p>We have sent instructions on how to supply this by email to 
+            <strong>test@email.com</strong>.
+        </p>
+
+        <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                I have not received an email
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+        
+              <p>Check your junk or spam folders.</p>
+
+              <p>If you still have not received the email, check <a href="w">what we require from you</a>.</p>
+        
+            </div>
+          </details>
+
+
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+
+        <p>We'll review this application. We'll let you know the outcome by post. 
+            This can take up to 15 working days.
+        </p>
+
+
+        <h3 class="nhsuk-heading-s">How to apply for a refund</h3>
+
+        <p>Refunds have to be claimed within 3 months of the date you paid the charge.</p>
+
+        <p>If you are claiming a refund for a sight test, you need to claim within 3 months of the date you had the test.</p>
+
+        <p>Find out how to <a href="c">claim a refund (opens in new tab)</a>.</p>
+
+        <p>Help us to improve the service by <a href="a">answering some questions (opens in new tab)</a> about it.</p>
+
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

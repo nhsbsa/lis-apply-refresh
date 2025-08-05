@@ -42,7 +42,7 @@ Your application
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="check-your-answers-eligibility">
-                      Change<span class="nhsuk-u-visually-hidden"> eligibility entry</span>
+                      Change<span class="nhsuk-u-visually-hidden"> eligibility check</span>
                     </a>
                   </dd>
             </div>
@@ -58,13 +58,13 @@ Your application
                 </dt>
             
                 <dd class="nhsuk-summary-list__value">
-                    <strong class="nhsuk-tag nhsuk-tag--white">
-                        To do
+                    <strong class="nhsuk-tag nhsuk-tag">
+                        Completed
                     </strong>
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="/v2/2-about-you/check-your-answers-personal-details">
-                      Start<span class="nhsuk-u-visually-hidden"> personal details</span>
+                      Change<span class="nhsuk-u-visually-hidden"> personal details</span>
                     </a>
                   </dd>
             </div>
@@ -75,10 +75,32 @@ Your application
                 </dt>
             
                 <dd class="nhsuk-summary-list__value">
-                    <strong class="nhsuk-tag nhsuk-tag--grey">
-                        Can't start yet
+                    <strong class="nhsuk-tag nhsuk-tag">
+                        Completed
                     </strong>
                 </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/v2/2-about-you/check-your-answers-contact-details">
+                        Change<span class="nhsuk-u-visually-hidden"> contact details</span>
+                      </a>
+                  </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Education and training
+                </dt>
+            
+                <dd class="nhsuk-summary-list__value">
+                    <strong class="nhsuk-tag nhsuk-tag">
+                        Completed
+                    </strong>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/v2/2-about-you/check-your-answers-education-training-details">
+                        Change<span class="nhsuk-u-visually-hidden"> education and training details</span>
+                      </a>
+                  </dd>
             </div>
         </dl>
 
@@ -91,11 +113,33 @@ Your application
                     Money from somewhere else
                 </dt>
             
-                <dd class="nhsuk-summary-list__actions">
-                    <strong class="nhsuk-tag nhsuk-tag--grey">
-                        Can't start yet
+                <dd class="nhsuk-summary-list__value">
+                    <strong class="nhsuk-tag nhsuk-tag">
+                        Completed
                     </strong>
                 </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/v2/3-about-your-income/check-your-answers-other-income">
+                        Change<span class="nhsuk-u-visually-hidden"> how you pay for things</span>
+                      </a>
+                  </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Money to support your education
+                </dt>
+            
+                <dd class="nhsuk-summary-list__value">
+                    <strong class="nhsuk-tag nhsuk-tag">
+                        Completed
+                    </strong>
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/v2/3-about-your-income/check-your-answers-education-support">
+                        Change<span class="nhsuk-u-visually-hidden"> how you pay for your education</span>
+                      </a>
+                  </dd>
             </div>
         </dl>
 
@@ -108,11 +152,16 @@ Your application
                     Where you live
                 </dt>
             
-                <dd class="nhsuk-summary-list__actions">
-                    <strong class="nhsuk-tag nhsuk-tag--grey">
-                        Can't start yet
+                <dd class="nhsuk-summary-list__value">
+                    <strong class="nhsuk-tag nhsuk-tag">
+                        Completed
                     </strong>
                 </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/v2/4-about-your-home/check-your-answers-where-you-live">
+                        Change<span class="nhsuk-u-visually-hidden"> where you live</span>
+                      </a>
+                  </dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
@@ -120,23 +169,28 @@ Your application
                     People who live with you
                 </dt>
             
-                <dd class="nhsuk-summary-list__actions">
-                    <strong class="nhsuk-tag nhsuk-tag--grey">
-                        Can't start yet
+                <dd class="nhsuk-summary-list__value">
+                    <strong class="nhsuk-tag nhsuk-tag--white">
+                        To do
                     </strong>
                 </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/v2/4-about-your-home/check-your-answers-people-who-live-with-you">
+                        Start<span class="nhsuk-u-visually-hidden"> people who live with you</span>
+                      </a>
+                  </dd>
             </div>
         </dl>
 
-
         <h2 class="nhsuk-heading-m">5. Submit application</h2>
+
 
         <button class="nhsuk-button" type="submit" disabled>
             Continue
           </button>
           
 
-          <!-- End of content -->
+        <!-- End of content -->
 	</div>
 </div>
 {% endblock %}

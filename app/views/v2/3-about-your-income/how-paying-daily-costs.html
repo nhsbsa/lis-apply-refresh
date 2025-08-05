@@ -41,7 +41,7 @@
 
 
 
-        <!-- <form action="sight-impaired" method="post"> -->
+        <form action="/v2/3-about-your-income/how-paying-daily-costs" method="post">
           <span class="nhsuk-caption-l">Money from somewhere else</span>
           <h1 class="nhsuk-heading-l">How are you paying your daily living costs?</h1>
           
@@ -52,22 +52,23 @@
               <label class="nhsuk-label" for="example">
                 How you are paying
               </label>
-              <textarea class="nhsuk-textarea nhsuk-js-character-count" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+              <textarea class="nhsuk-textarea nhsuk-js-character-count" id="dailyCosts" name="dailyCosts" rows="5" aria-describedby="more-detail-hint"></textarea>
             </div>
           
             <div class="nhsuk-hint nhsuk-character-count__message" id="more-detail-info">
-              You can enter up to 375 characters
+              You can enter up to 375 characters.
             </div>
           
           </div>
 
+                      
+              {{ button({
+                "text": "Continue"
+            }) }}
+
+        </form>
+
   </div>
-            
-	</div>
-  
-      {{ button({
-        "text": "Continue"
-    }) }}
 
 </div>
 {% endblock %}

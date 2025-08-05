@@ -5,6 +5,24 @@ const router = express.Router();
 
 
 
+// --- Helper function to redirect through about-your-income follow-up pages ---
+function redirectToNextFollowUpPage(request, response) {
+    let queue = request.session.data['howPayingQueue'];
+
+    // Remove the page just completed
+    if (queue && queue.length > 0) {
+        queue.shift();
+    }
+
+    // Redirect to next in queue or fallback
+    if (queue && queue.length > 0) {
+        return response.redirect(queue[0]);
+    } else {
+        return response.redirect("/v2/3-about-your-income/check-your-answers-other-income");
+    }
+}
+
+
 // Version 1
 
 // which-country-do-you-live-in.html
@@ -789,32 +807,73 @@ router.post('/v2/1-check-before-you-start/date-of-birth-continue', function (req
 
 // how-paying-for-things.html
 router.post('/v2/3-about-your-income/how-paying-for-things', function (request, response) {
-    var howPayingForThings = request.session.data['howPayingForThings']
-    // console.log(moneyComingIn);
+    let howPayingForThings = request.session.data['howPayingForThings'];
 
-    // If no checkboxes selected, stay on this page
-    if (howPayingForThings == null) {
-        response.redirect("how-paying-for-things")
+    // If no checkboxes selected, stay on the same page
+    if (!howPayingForThings || howPayingForThings.length === 0) {
+        return response.redirect("how-paying-for-things");
     }
 
-    // Store the array directly in session data for rendering
+    if (!Array.isArray(howPayingForThings)) {
+        howPayingForThings = [howPayingForThings];
+    }
+
     request.session.data['howPayingForThings'] = howPayingForThings;
 
-    // Look at each checkbox: if any one of them has the value 'cant-apply', send them to the Cannot Apply page
-    for (const checkbox of howPayingForThings) {
-        if (checkbox == "Money from friends or family") {
-            response.redirect("/v2/3-about-your-income/amount-from-friends-relatives")
-        }
-        if (checkbox == "Savings") {
-            response.redirect("/v2/3-about-your-income/amount-from-savings")
-        }
-        if (checkbox == "Donations from charity or voluntary organisations") {
-            response.redirect("/v2/3-about-your-income/amount-from-donations")
-        }
+    // If "None of these" is selected, skip follow-up pages
+    if (howPayingForThings.includes("none")) {
+        return response.redirect("/v2/3-about-your-income/how-paying-daily-costs");
     }
 
-    // Otherwise, no 'cant-apply' checkboxes were checked, so proceed to next page
-    response.redirect("how-paying-daily-costs")
+    // Build queue of follow-up pages
+    let followUpPages = [];
+
+    if (howPayingForThings.includes("Money from friends or family")) {
+        followUpPages.push("/v2/3-about-your-income/amount-from-friends-relatives");
+    }
+    if (howPayingForThings.includes("Savings")) {
+        followUpPages.push("/v2/3-about-your-income/amount-from-savings");
+    }
+    if (howPayingForThings.includes("Donations from charity or voluntary organisations")) {
+        followUpPages.push("/v2/3-about-your-income/amount-from-donations");
+    }
+
+    // Save queue for use across routes
+    request.session.data['howPayingQueue'] = followUpPages;
+
+    // Go to first page in queue, or fallback
+    if (followUpPages.length > 0) {
+        return response.redirect(followUpPages[0]);
+    } else {
+        return response.redirect("/v2/3-about-your-income/check-your-answers-other-income");
+    }
 });
+
+
+
+router.post('/v2/3-about-your-income/amount-from-friends-relatives', function (request, response) {
+    request.session.data['friendsAmount'] = request.body.friendsAmount;
+    redirectToNextFollowUpPage(request, response);
+});
+
+router.post('/v2/3-about-your-income/amount-from-savings', function (request, response) {
+    request.session.data['savingsAmount'] = request.body.savingsAmount;
+    redirectToNextFollowUpPage(request, response);
+});
+
+router.post('/v2/3-about-your-income/amount-from-donations', function (request, response) {
+    request.session.data['donationsAmount'] = request.body.donationsAmount;
+    redirectToNextFollowUpPage(request, response);
+});
+
+
+
+router.post('/v2/3-about-your-income/how-paying-daily-costs', function (request, response) {
+    const dailyCosts = request.body.dailyCosts;
+    request.session.data['dailyCosts'] = dailyCosts;
+
+    response.redirect('/v2/3-about-your-income/check-your-answers-other-income');
+});
+
 
 module.exports = router;

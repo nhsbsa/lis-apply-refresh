@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+What is the name of your school, college or university?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+            "href": "full-or-part-time",
+            "text": "Go back"
+        }) }}
+
+        <span class="nhsuk-caption-l">Education and training </span>
+        <h1 class="nhsuk-heading-l">What is the name of your school, college or university?</h1>
+        
+        <form action="qualification-level" method="post">
+            {{ input({
+            "label": {
+                "text": "Name of establishment"
+            },
+            "id": "establishment-name",
+            "name": "establishmentName",
+            "classes": "nhsuk-input--width-20",
+            "value": data['establishmentName'] | capitalize
+            }) }}
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        </form>
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}
