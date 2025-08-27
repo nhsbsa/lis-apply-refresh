@@ -22,6 +22,11 @@
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
+{{ backLink({
+  "href": 'javascript:history.go(-1);',
+  "text": "Go back"
+}) }}
+
 {% endblock %}
 
 <!-- For adding a back link -->
@@ -34,15 +39,11 @@
 {% block content %}
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
-        {{ backLink({
-            "href": 'javascript:history.go(-1);',
-            "text": "Go back"
-        }) }}
 
 
 
         <!-- <form action="sight-impaired" method="post"> -->
-          <span class="nhsuk-caption-l">Income and other money</span>
+          <span class="nhsuk-caption-l">About your income</span>
           <h1 class="nhsuk-heading-l">What type of Pension Credit do you get?</h1>
           <p>Pension Credit is a benefit with 2 parts - Guarantee Credit and Savings Credit.</p>
 
@@ -64,7 +65,7 @@
 
               <p>The most you can get in Savings Credit per week is {{ data.MaximumSingleSavingsCredit }} a week.</p>
               
-              <p>If you're still unsure contact the <a href="">Pension Service helpline (opens in new tab)</a>.</p>
+              <p>If you're still unsure contact the <a href="p">Pension Service helpline (opens in new tab)</a>.</p>
 
           
             </div>
