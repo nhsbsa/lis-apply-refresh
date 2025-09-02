@@ -776,6 +776,20 @@ router.post('/v2/4-education-and-training/how-many-terms', function (request, re
 
 
 router.post('/v2/1-check-before-you-start/email-address-continue', function (request, response) {
+
+    response.redirect('date-of-birth-continue')
+});
+
+
+
+//date-of-birth-continue.html
+router.post('/v2/1-check-before-you-start/date-of-birth-continue', function (request, response) {
+
+    response.redirect("code-email")
+});
+
+//code-email.html
+router.post('/v2/1-check-before-you-start/code-email', function (request, response) {
     const accessCode = request.body['example-email'];
 
     if (!accessCode || accessCode.trim() === '') {
@@ -790,15 +804,6 @@ router.post('/v2/1-check-before-you-start/email-address-continue', function (req
     if (accessCode.trim() !== '123456') {
         return response.render('v2/1-check-before-you-start/code-email', { error: 'incorrect' });
     }
-
-    response.redirect('date-of-birth-continue');
-});
-
-
-
-
-//date-of-birth-continue.html
-router.post('/v2/1-check-before-you-start/date-of-birth-continue', function (request, response) {
     response.redirect("your-application-progress")
 });
 

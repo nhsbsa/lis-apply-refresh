@@ -34,7 +34,7 @@ Check your answers
         {% if data['moneyComingIn'] %}
             {% for item in data['moneyComingIn'] %}
                 {% set capitalizedItem = item | capitalize %}
-                {% set moneyComingInList = moneyComingInList + capitalizedItem + '<br>' %}
+                {% set moneyComingInList = moneyComingInList + capitalizedItem + '<br><br>' %}
             {% endfor %}
         {% endif %}
 
@@ -125,24 +125,6 @@ Check your answers
                     href: "education-or-training",
                     text: "Change",
                     visuallyHiddenText: "education training"
-                }
-                ]
-            }
-            },
-            {
-                key: {
-                    text: "Get financial support"
-                },
-                value: {
-                    text: data['financialSupport'] | capitalize
-                },
-                actions: {
-                    items: [
-                    {
-                        href: "financial-support",
-                        text: "Change",
-                        visuallyHiddenText: "financial support"
-
                 }
                 ]
             }
