@@ -4,7 +4,6 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
-  <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
 {% endblock %}
 
 <!-- Set the page title -->
@@ -35,40 +34,38 @@ LIS Apply Prototype
 			Apply online for help with NHS costs
 		</h1>
 
-		{{ details({
-		"classes": "nhsuk-expander",
-		"text": "Version 1",
-		"HTML": "
-			<h2 class=\"nhsuk-heading-m\">Full journey</h2>
-			<p>Re-design of the existing LIS apply service using the new NHS toolkit.</p>
-			<a href=\"/v1/0-start/start\" class=\"nhsuk-button nhsuk-u-margin-bottom-0\" role=\"button\">View prototype</a>
-			<hr>
-			<h2 class=\"nhsuk-heading-m\">Adhoc screens</h2>
-			<ul>
-				<li><a href=\"/v1/session-timeout\">Session timed out</a></li>
-			</ul>
-			"
-		}) }}
+		{% call details({
+			summaryText: "Version 1",
+			classes: "nhsuk-expander"
+		  }) %}
+		  <h2 class="nhsuk-heading-m">Full journey</h2>
+		  <p>Re-design of the existing LIS apply service using the new NHS toolkit.</p>
+		  <a href="/v1/0-start/start" class="nhsuk-button nhsuk-u-margin-bottom-0" role="button">View prototype</a>
+		  <hr>
+		  <h2 class="nhsuk-heading-m">Adhoc screens</h2>
+		  <ul>
+			  <li><a href="/v1/session-timeout">Session timed out</a></li>
+		  </ul>
+		  {% endcall %}
 
-		{{ details({
-			"classes": "nhsuk-expander",
-			"text": "Version 2",
-			"HTML": "
-				<h2 class=\"nhsuk-heading-m\">Full journey</h2>
-				<p>Updating the new NHS toolkit designs to match LIS apply live service.</p>
-				<a href=\"/v2/1-check-before-you-start/apply-online\" class=\"nhsuk-button nhsuk-u-margin-bottom-0\" role=\"button\">View prototype</a>
-				<hr>
-				<h2 class=\"nhsuk-heading-m\">Adhoc screens</h2>
-				<ul>
-					<li><a href=\"/v2/session-timeout\">Session timed out</a></li>
-					<li><a href=\"/v2/cookies/nhsbsa-cookies\">Cookies on the NHSBSA website</a></li>
-					<li><a href=\"/v2/cookies/choose-cookies\">Choose which cookies we use</a></li>
-					<li><a href=\"/v2/cookies/cookies-saved\">Cookie settings have been saved</a></li>
-					<li><a href=\"/v2/cookies/start-cookies\">Start page with cookies choice</a></li>
-					<li><a href=\"/v2/cookies/cookies-decision\">Start page with cookies decision</a></li>
-				</ul>
-				"
-			}) }}
+		  {% call details({
+			summaryText: "Version 2",
+			classes: "nhsuk-expander"
+		  }) %}
+		  <h2 class="nhsuk-heading-m">Full journey</h2>
+		  <p>Updating the new NHS toolkit designs to match LIS apply live service.</p>
+		  <a href="/v2/1-check-before-you-start/apply-online" class="nhsuk-button nhsuk-u-margin-bottom-0" role="button">View prototype</a>
+		  <hr>
+		  <h2 class="nhsuk-heading-m">Adhoc screens</h2>
+		  <ul>
+			  <li><a href="/v2/session-timeout">Session timed out</a></li>
+			  <li><a href="/v2/cookies/nhsbsa-cookies">Cookies on the NHSBSA website</a></li>
+			  <li><a href="/v2/cookies/choose-cookies">Choose which cookies we use</a></li>
+			  <li><a href="/v2/cookies/cookies-saved">Cookie settings have been saved</a></li>
+			  <li><a href="/v2/cookies/start-cookies">Start page with cookies choice</a></li>
+			  <li><a href="/v2/cookies/cookies-decision">Start page with cookies decision</a></li>
+		  </ul>
+		  {% endcall %}
 
 		<!-- End of content -->
 	</div>

@@ -40,6 +40,17 @@ module.exports = function (env) { /* eslint-disable-line no-unused-vars */
     return [ today.getDate(), today.getMonth() + 1, today.getFullYear()].join(' '); 
 
   };
+    
+  
+  //Currency filter to 2 decimals for how paying for things
+  filters.currencyOnly = function(value) {
+    if (!value) return '';
+    const num = parseFloat(value);
+    if (isNaN(num)) return value;
+    return '£' + num.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+  
+  
 
   
   return filters;
