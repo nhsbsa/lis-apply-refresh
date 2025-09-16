@@ -8,6 +8,10 @@ What is the name of your school, college or university?
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
+{{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
 {% endblock %}
 
 <!-- For adding a back link -->
@@ -20,10 +24,6 @@ What is the name of your school, college or university?
 {% block content %}
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
-        {{ backLink({
-            "href": "full-or-part-time",
-            "text": "Go back"
-        }) }}
 
         <span class="nhsuk-caption-l">Education and training </span>
         <h1 class="nhsuk-heading-l">What is the name of your school, college or university?</h1>

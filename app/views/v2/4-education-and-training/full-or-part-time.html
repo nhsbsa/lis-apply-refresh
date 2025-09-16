@@ -8,6 +8,10 @@ Are you in full or part time education?
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
+{{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
 {% endblock %}
 
 <!-- For adding a back link -->
@@ -20,10 +24,6 @@ Are you in full or part time education?
 {% block content %}
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
-        {{ backLink({
-            "href": "your-application-progress-3",
-            "text": "Go back"
-        }) }}
 
         <form action="name-of-establishment" method="post">
             <span class="nhsuk-caption-l"> Education and training </span>

@@ -8,6 +8,10 @@ Does your course have 3 terms this academic year?
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
+{{ backLink({
+  "href": 'javascript:history.go(-1);',
+  "text": "Back"
+}) }}
 {% endblock %}
 
 <!-- For adding a back link -->
@@ -20,10 +24,6 @@ Does your course have 3 terms this academic year?
 {% block content %}
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
-        {{ backLink({
-            "href": "subject",
-            "text": "Go back"
-        }) }}
 
         <span class="nhsuk-caption-l">Education and training </span>
         <h1 class="nhsuk-heading-l">Does your course have 3 terms this academic year?

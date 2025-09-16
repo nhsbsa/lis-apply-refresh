@@ -9,6 +9,10 @@ Are you an overseas student?
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
+  {{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
 {% endblock %}
 
 <!-- For adding a back link -->
@@ -21,10 +25,6 @@ Are you an overseas student?
 {% block content %}
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
-        {{ backLink({
-            "href": "term-dates-correct",
-            "text": "Go back"
-        }) }}
 
         <form action="check-your-answers-education-training-details" method="post">
             <span class="nhsuk-caption-l">Education and training</span>
