@@ -30,143 +30,168 @@ Check your answers
 
         <h2 class="nhsuk-heading-m">Check eligibility</h2>
 
+        {# ---------------- Money coming in display ---------------- #}
         {% set moneyComingInList = '' %}
         {% if data['moneyComingIn'] %}
-            {% for item in data['moneyComingIn'] %}
-                {% set capitalizedItem = item | capitalize %}
-                {% set moneyComingInList = moneyComingInList + capitalizedItem + '<br><br>' %}
-            {% endfor %}
+          {% for item in data['moneyComingIn'] %}
+            {% set capitalizedItem = item | capitalize %}
+            {% set moneyComingInList = moneyComingInList + capitalizedItem + '<br><br>' %}
+          {% endfor %}
         {% endif %}
-
-
-
-        {{ summaryList({
-        rows: [
+        
+        {# ---------------- Financial support display ---------------- #}
+        {% set financialSupportDisplay = "" %}
+        {% if data['financialSupport'] %}
+          {% if data['financialSupport'] == 'money-coming-in' %}
+            {% set financialSupportDisplay = "Support from Student Finance England (SFE), Student Finance Wales (SFW), or the Student Awards Agency for Scotland (SAAS)" %}
+          {% else %}
+            {% set financialSupportDisplay = "No, I do not get financial support from any of these" %}
+          {% endif %}
+        {% endif %}
+        
+        {# --- Step 1: Start with rows always shown --- #}
+        {% set rows = [
+          {
+            key: { text: "Country you live in" },
+            value: { text: data['country'] | capitalize },
+            actions: {
+              items: [
+                { href: "which-country-do-you-live-in", text: "Change", visuallyHiddenText: "country you live in" }
+              ]
+            }
+          },
+          {
+            key: { text: "Live permanently in a care home" },
+            value: { text: data['care'] | capitalize },
+            actions: {
+              items: [
+                { href: "permanent-care-home", text: "Change", visuallyHiddenText: "if you live permanently in a care home" }
+              ]
+            }
+          }
+        ] %}
+        
+        {# --- Conditional care home logic --- #}
+        {% set careHomeRows = [] %}
+        
+        {% if data['care'] | lower == 'yes' %}
+          {# If in care home, show only the council questions and stop here #}
+          {% set careHomeRows = [
             {
-            key: {
-                text: "Country you live in"
-            },
-            value: {
-                text: data['country'] | capitalize
-            },
-            actions: {
+              key: { text: "Council helps to pay" },
+              value: { text: data['council'] | capitalize },
+              actions: {
                 items: [
-                {
-                    href: "which-country-do-you-live-in",
-                    text: "Change",
-                    visuallyHiddenText: "country you live in"
-                }
+                  { href: "council-help-pay", text: "Change", visuallyHiddenText: "council helps to pay" }
                 ]
-            }
-            },
-            {
-            key: {
-                text: "Live permanently in a care home"
-            },
-            value: {
-                text: data['care'] | capitalize
-            },
-            actions: {
-                items: [
-                {
-                    href: "permanent-care-home",
-                    text: "Change",
-                    visuallyHiddenText: "if you live permanently in a care home"
-                }
-                ]
-            }
-            },
-        {
-            key: {
-                    text: "Live with a partner"
-                },
-                value: {
-                    text: data['partner'] | capitalize
-            },
-
-            actions: {
-                items: [
-                {
-                    href: "live-with-partner",
-                    text: "Change",
-                    visuallyHiddenText: "if you live with a partner"
-                }
-                ]
-            }
+              }
             },
             {
-            key: {
-                text: "Claimed asylum"
-            },
-            value: {
-                text: data['asylum'] | capitalize
-            },
-            actions: {
+              key: { text: "Council name" },
+              value: { text: data['councilName'] | capitalize },
+              actions: {
                 items: [
-                {
-                    href: "claimed-asylum",
-                    text: "Change",
-                    visuallyHiddenText: "claimed asylum"
-                }
+                  { href: "council-name", text: "Change", visuallyHiddenText: "council name" }
                 ]
+              }
             }
-            },
-
-            {
-            key: {
-                text: "In education or training"
-            },
-            value: {
-                text: data['training'] | capitalize
-            },
-            actions: {
-                items: [
-                {
-                    href: "education-or-training",
-                    text: "Change",
-                    visuallyHiddenText: "education training"
-                }
-                ]
-            }
-            },
-            {
-                key: {
-                    text: "Get money from"
-                },
-                value: {
-                    text: moneyComingInList | safe 
-                },
+          ] %}
+          {% set rows = rows.concat(careHomeRows) %}
+        {% else %}
+          {# --- Asylum rows --- #}
+        
+          {# Claimed asylum --- #}
+          {% set asylumRows = [] %}
+          {% if data['asylum'] | lower == 'yes' %}
+            {% set asylumRows = [
+              {
+                key: { text: "Claimed asylum" },
+                value: { text: data['asylum'] | capitalize },
                 actions: {
-                    items: [
-                    {
-                        href: "money-coming-in",
-                        text: "Change",
-                        visuallyHiddenText: "get money from"
-
+                  items: [{ href: "claimed-asylum", text: "Change", visuallyHiddenText: "claimed asylum" }]
                 }
-                ]
-            }
+              },
+              {
+                key: { text: "Asylum application decision" },
+                value: { text: data['decision'] | capitalize },
+                actions: {
+                  items: [{ href: "asylum-application-decision", text: "Change", visuallyHiddenText: "asylum application decision" }]
+                }
+              },
+              {
+                key: { text: "Support from UK Visas and Immigration (UKVI)" },
+                value: { text: data['support'] | capitalize },
+                actions: {
+                  items: [{ href: "support-from-uk-visas-immigration", text: "Change", visuallyHiddenText: "support from UK Visas and Immigration (UKVI)" }]
+                }
+              }
+            ] %}
+          {% else %}
+            {% set asylumRows = [
+              {
+                key: { text: "Claimed asylum" },
+                value: { text: data['asylum'] | capitalize },
+                actions: {
+                  items: [{ href: "claimed-asylum", text: "Change", visuallyHiddenText: "claimed asylum" }]
+                }
+              }
+            ] %}
+          {% endif %}
+          {% set rows = rows.concat(asylumRows) %}
+        
+          {# Partner --- #}
+          {% set rows = rows.concat([
+            {
+              key: { text: "Live with a partner" },
+              value: { text: data['partner'] | capitalize },
+              actions: {
+                items: [{ href: "live-with-partner", text: "Change", visuallyHiddenText: "if you live with a partner" }]
+              }
             },
             {
-                key: {
-                    text: "Have more than £6,000 in savings"
-                },
-                value: {
-                    text: data['moreThan6000'] | capitalize
-                },
+              key: { text: "In education or training" },
+              value: { text: data['training'] | capitalize },
+              actions: {
+                items: [{ href: "education-or-training", text: "Change", visuallyHiddenText: "education training" }]
+              }
+            }
+          ]) %}
+        
+          {# Financial support rows --- #}
+          {% if data['training'] | lower == 'yes' %}
+            {% set rows = rows.concat([
+              {
+                key: { text: "Get financial support" },
+                value: { text: financialSupportDisplay },
                 actions: {
-                    items: [
-                    {
-                        href: "more-than-6000",
-                        text: "Change",
-                        visuallyHiddenText: "more than 6,000"
-
+                  items: [{ href: "financial-support", text: "Change", visuallyHiddenText: "financial support" }]
                 }
-                ]
+              }
+            ]) %}
+          {% endif %}
+        
+          {# Money and savings rows --- #}
+          {% set rows = rows.concat([
+            {
+              key: { text: "Get money from" },
+              value: { text: moneyComingInList | safe },
+              actions: {
+                items: [{ href: "money-coming-in", text: "Change", visuallyHiddenText: "get money from" }]
+              }
+            },
+            {
+              key: { text: "Have more than £6,000 in savings" },
+              value: { text: data['moreThan6000'] | capitalize },
+              actions: {
+                items: [{ href: "more-than-6000", text: "Change", visuallyHiddenText: "more than 6,000" }]
+              }
             }
-            }
-        ]
-        }) }}
+          ]) %}
+        {% endif %}
+        
+        {# --- Render summary list --- #}
+        {{ summaryList({ rows: rows }) }}
+        
 
         <a href="you-can-apply-online" class="nhsuk-button" role="button">Continue</a>
         <!-- End of content -->

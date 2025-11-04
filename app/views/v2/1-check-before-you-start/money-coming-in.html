@@ -29,7 +29,7 @@ Do you get money from any of these?
 
         {% from 'checkboxes/macro.njk' import checkboxes %}
 
-  <form action="money-coming-in" method="post">
+  <form action="/v2/1-check-before-you-start/money-coming-in" method="post">
   {{ checkboxes({
     idPrefix: "money-coming-in",
     name: "moneyComingIn",

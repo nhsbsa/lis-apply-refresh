@@ -61,7 +61,7 @@ Check your answers
                     Phone number
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['phoneNumber'] }}
+                    {{ data['phoneNumber'] or "07123456789" }}
                     
                     {% if data['deaf'] == 'yes' %}
                         <p>I'm deaf or hard of hearing and use a text relay service.</p>
@@ -104,7 +104,7 @@ Check your answers
                     Email address
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                    {{ data['emailAddress'] }}
+                    {{ data['emailAddress'] or "susansmith@mail.com" }}
                     </dd>
                 
                     <dd class="nhsuk-summary-list__actions">
@@ -120,7 +120,7 @@ Check your answers
             {% endif %}
           </dl>
 
-        <a href="your-application-progress-3" class="nhsuk-button" role="button">Continue</a>
+        <a href="/v2/3-about-your-income/your-application-progress-3" class="nhsuk-button" role="button">Continue</a>
         <!-- End of content -->
 	</div>
 </div>

@@ -45,8 +45,10 @@ Check your answers
                 text: "Full name"
             },
             value: {
-                text: data['firstName'] | capitalize + ' ' + data['middleName'] | capitalize + ' ' + data['lastName'] | capitalize
-            },
+                text: (data.firstName | default('Susan', true) | capitalize) + ' ' +
+                      (data.middleName | default('Jane', true) | capitalize) + ' ' +
+                      (data.lastName | default('Smith', true) | capitalize)
+            },            
             actions: {
                 items: [
                 {
@@ -107,7 +109,24 @@ Check your answers
                 }
                 ]
             }
-            }
+            },
+            {
+                key: {
+                    text: "Certified as severely sight impaired or registered blind"
+                },
+                value: {
+                    text: data.sight | capitalize
+                },
+                actions: {
+                    items: [
+                    {
+                        href: "sight-impaired",
+                        text: "Change",
+                        visuallyHiddenText: "visual impairement details"
+                    }
+                    ]
+                }
+                }
         ]
         }) }}
 

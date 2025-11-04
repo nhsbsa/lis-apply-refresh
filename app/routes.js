@@ -436,6 +436,11 @@ router.post('/v2/1-check-before-you-start/council-help-pay', function (request, 
     }
 });
 
+// council-name.html
+router.post('/v2/1-check-before-you-start/council-name', function (request, response) {
+        response.redirect("check-your-answers-check-eligibility")
+});
+
 // live-with-partner.html
 router.post('/v2/1-check-before-you-start/live-with-partner', function (request, response) {
     var livePartner = request.session.data['partner']
@@ -705,27 +710,35 @@ router.post('/v2/1-check-before-you-start/financial-support', function (request,
 
 // money-coming-in.html
 router.post('/v2/1-check-before-you-start/money-coming-in', function (request, response) {
-    var moneyComingIn = request.session.data['moneyComingIn']
-    // console.log(moneyComingIn);
-
-    // If no checkboxes selected, stay on this page
-    if (moneyComingIn == null) {
-        response.redirect("money-coming-in")
+    let moneyComingIn = request.session.data['moneyComingIn'];
+  
+    // Always convert to an array
+    if (!Array.isArray(moneyComingIn)) {
+      if (typeof moneyComingIn === 'string' && moneyComingIn.trim() !== '') {
+        moneyComingIn = [moneyComingIn]; // wrap single string in an array
+      } else {
+        moneyComingIn = []; // no selection
+      }
     }
-
-    // Store the array directly in session data for rendering
+  
+    // If nothing selected, stay on the same page
+    if (moneyComingIn.length === 0) {
+      return response.redirect('money-coming-in');
+    }
+  
+    // Save the cleaned array back into session
     request.session.data['moneyComingIn'] = moneyComingIn;
-
-    // Look at each checkbox: if any one of them has the value 'cant-apply', send them to the Cannot Apply page
+  
+    // Check if any of the selected options are "cant-apply"
     for (const checkbox of moneyComingIn) {
-        if (checkbox == "cant-apply") {
-            response.redirect("/v2/cannot-apply-online-yet")
-        }
+      if (checkbox === 'cant-apply') {
+        return response.redirect('/v2/cannot-apply-online-yet');
+      }
     }
-
-    // Otherwise, no 'cant-apply' checkboxes were checked, so proceed to next page
-    response.redirect("more-than-6000")
-});
+  
+    // Otherwise, move on to the next step
+    response.redirect('more-than-6000');
+  });
 
 
 // more-than-6000.html
@@ -880,5 +893,25 @@ router.post('/v2/3-about-your-income/how-paying-daily-costs', function (request,
     response.redirect('/v2/3-about-your-income/check-your-answers-other-income');
 });
 
+
+  //universal-credit
+  router.post('/v2/3-about-your-income/universal-credit', function (request, response) {
+    var universalCredit = request.session.data['universal-credit']
+
+    if (universalCredit == "yes") {
+        response.redirect('/v2/3-about-your-income/universal-credit-claim')
+    } else if (universalCredit == "not-yet") {
+        response.redirect('/v2/3-about-your-income/awaiting-universal-credit')
+    } else {
+        response.redirect('')
+    }
+
+  });
+
+  //universal-credit-claim
+  router.post('/v2/3-about-your-income/universal-credit-claim', function (req, res) {
+    res.redirect('/v2/3-about-your-income/universal-credit-take-home-pay')
+  })
+  
 
 module.exports = router;
