@@ -40,22 +40,27 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
-    {% if data['partner'] == "no" %}
-      {% set H1 = "Was your total take-home pay for your last Universal Credit period " %}
-      {% if data['universal-credit-claim'] == "yes" %}
-        {% set H1 = H1 + "£935 or less?" %}
-      {% else %}
-        {% set H1 = H1 + "£435 or less?" %}
-      {% endif %}
-    {% endif %}
-
+    
     {% if data['partner'] == "yes" %}
+
+      <!-- HAS PARTNER -->
       {% set H1 = "Did you and your partner have a combined total take-home pay of " %}
       {% if data['universal-credit-claim'] == "yes" %}
         {% set H1 = H1 + "£935 or less in your last Universal Credit period?" %}
       {% else %}
         {% set H1 = H1 + "£435 or less in your last Universal Credit period?" %}
       {% endif %}
+
+    {% else %}
+
+      <!-- SINGLE -->
+      {% set H1 = "Was your total take-home pay for your last Universal Credit period " %}
+      {% if data['universal-credit-claim'] == "yes" %}
+        {% set H1 = H1 + "£935 or less?" %}
+      {% else %}
+        {% set H1 = H1 + "£435 or less?" %}
+      {% endif %}
+
     {% endif %}
 
     <span class="nhsuk-caption-l">Benefits</span>
