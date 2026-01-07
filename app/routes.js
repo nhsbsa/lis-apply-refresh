@@ -915,10 +915,15 @@ router.post('/v2/3-about-your-income/how-paying-daily-costs', function (request,
 
 
 
-  
+
 // Children (Jan 2026)
 router.post('/v2/5-about-your-home/support-children-financially--current', function (req, res) {
     let destination = 'live-with-another-person--current';
+    res.redirect( destination );
+});
+
+router.post('/v2/5-about-your-home/support-children-financially--simple', function (req, res) {
+    let destination = 'live-with-another-person--simple';
     res.redirect( destination );
 });
   
