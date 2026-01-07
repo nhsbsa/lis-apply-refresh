@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What subject are you studying?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ backLink({
+        href: 'javascript:history.go(-1);',
+        text: 'Back'
+    }) }}
+{% endblock %}
+
+{% block outerContent %}{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+
+        <form method="post" novalidate>
+
+            <span class="nhsuk-caption-l">People who live with you</span>
+            
+            {{ radios({
+                idPrefix: 'hasChildren',
+                name: 'hasChildren',
+                value: data.hasChildren,
+                fieldset: {
+                    legend: {
+                        text: 'Do you have any children living with you who you support financially?',
+                        classes: 'nhsuk-fieldset__legend--l',
+                        isPageHeading: true
+                    }
+                },
+                hint: {
+                    html: '<p>They must be either:</p>
+                            <ul>
+                                <li>under 16</li>
+                                <li>16 to 19 and in unpaid training or full-time education (studying for a qualification no higher than an A level or equivalent)</li>
+                            </ul>'
+                },
+                items: [
+                    {
+                        value: 'yes',
+                        text: 'Yes'
+                    },
+                    {
+                        value: 'no',
+                        text: 'No'
+                    }
+                ]
+            }) }}
+
+            {{ button({
+                text: 'Continue'
+            }) }}
+
+        </form>
+
+        
+
+        
+
+	</div>
+</div>
+
+{% endblock %}

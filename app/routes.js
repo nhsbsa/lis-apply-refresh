@@ -912,6 +912,15 @@ router.post('/v2/3-about-your-income/how-paying-daily-costs', function (request,
   router.post('/v2/3-about-your-income/universal-credit-claim', function (req, res) {
     res.redirect('/v2/3-about-your-income/universal-credit-take-home-pay')
   })
+
+
+
+  
+// Children (Jan 2026)
+router.post('/v2/5-about-your-home/support-children-financially--current', function (req, res) {
+    let destination = 'live-with-another-person--current';
+    res.redirect( destination );
+});
   
 
 module.exports = router;
