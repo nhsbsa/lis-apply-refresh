@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What subject are you studying?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ backLink({
+        href: 'javascript:history.go(-1);',
+        text: 'Back'
+    }) }}
+{% endblock %}
+
+{% block outerContent %}{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+
+        {% set questionHeading = 'When were your children born?' %}
+        {% set noOfChildren = data.noOfChildren | int %}
+
+        {% if noOfChildren > 0 %}
+            {% if noOfChildren == 1 %}
+                {% set summaryListItem = '1 child, who you support financially' %}
+                {% set questionHeading = 'When was your child born?' %}
+            {% else %}
+                {% set summaryListItem = noOfChildren + ' children, who you support financially' %}
+            {% endif %}
+        {% endif %}
+
+
+            {% if data.hasChildren === 'yes' and noOfChildren > 0 %}
+
+                {% set radioPageHeader = false %}
+
+                <span class="nhsuk-caption-l">People who live with you</span>
+                <h1 class="nhsuk-heading-l">You've told us you live with:</h1>
+
+                <style>
+                    @media (min-width: 40.0625em) {
+                        .nhsuk-summary-list__key {
+                            width: 100%;
+                        }
+                    }
+                </style>
+
+                {{ summaryList({
+                    rows: [
+                        {
+                        key: {
+                            text: summaryListItem
+                        },
+                        actions: {
+                            items: [
+                            {
+                                href: 'support-children-financially--full',
+                                text: 'Change',
+                                visuallyHiddenText: 'number of children'
+                            }
+                            ]
+                        }
+                        }
+                    ]}) }}
+
+            {% endif %}
+
+
+        <form method="post" novalidate>
+
+            <h1 class="nhsuk-heading-l">{{ questionHeading }}</h1>
+
+            {% set titles = [
+                "First child's date of birth",
+                "Second child's date of birth",
+                "Third child's date of birth",
+                "Fourth child's date of birth",
+                "Fifth child's date of birth",
+                "Sixth child's date of birth",
+                "Seventh child's date of birth",
+                "Eighth child's date of birth",
+                "Ninth child's date of birth",
+                "Tenth child's date of birth"
+            ] %}
+            
+            {% for i in range( 1, (noOfChildren+1) ) %}
+
+                {% set hintObj = false %}
+                {% if i === 1 %}
+                    {% set hintObj = { text: 'For example, 15 3 2024'} %}
+                {% endif %}
+                
+                {{ dateInput({
+                    id: 'child'+i+'DateOfBirth',
+                    namePrefix: 'child'+i+'DateOfBirth',
+                    value: data['child'+i+'DateOfBirth'],
+                    fieldset: {
+                        legend: {
+                            text: titles[i-1],
+                            classes: 'nhsuk-fieldset__legend--s',
+                            isPageHeading: false
+                        }
+                    },
+                    hint: hintObj,
+                    items: [
+                        {
+                        name: "day",
+                        classes: "nhsuk-input--width-2"
+                        },
+                        {
+                        name: "month",
+                        classes: "nhsuk-input--width-2"
+                        },
+                        {
+                        name: "year",
+                        classes: "nhsuk-input--width-4"
+                        }
+                    ]
+                    }) }}
+
+            {% endfor %}
+
+            {{ button({
+                text: 'Continue'
+            }) }}
+
+        </form>
+
+        
+
+        
+
+	</div>
+</div>
+
+{% endblock %}

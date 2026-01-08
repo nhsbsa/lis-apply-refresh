@@ -926,6 +926,23 @@ router.post('/v2/5-about-your-home/support-children-financially--simple', functi
     let destination = 'live-with-another-person--simple';
     res.redirect( destination );
 });
+
+router.post('/v2/5-about-your-home/support-children-financially--full', function (req, res) {
+    
+    let hasChildren = req.session.data.hasChildren | 'no';
+    let noOfChildren = ( !Number.isNaN(parseInt(req.session.data.noOfChildren)) ) ? parseInt(req.session.data.noOfChildren) : 0;
+    
+    let destination = ( hasChildren === 'no' || noOfChildren === 0 ) ? 'live-with-another-person--full' : 'about-your-children--full';
+    res.redirect( destination );
+
+});
+
+router.post('/v2/5-about-your-home/about-your-children--full', function (req, res) {
+    let destination = 'live-with-another-person--full';
+    res.redirect( destination );
+});
+
+
   
 
 module.exports = router;
