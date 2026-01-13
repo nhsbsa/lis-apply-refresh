@@ -24,3 +24,24 @@
         margin-bottom: 0px;
     }
 }
+
+
+@media all and (min-width: 48.0625em){
+    
+    .align-row {
+        display: flex;
+    }
+
+    .align-row .nhsuk-grid-column-one-half:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        position: relative;
+        left: -10vw;
+    }
+
+    .align-row .nhsuk-grid-column-one-half:last-child .nhsuk-checkboxes__label {
+        white-space: nowrap;
+    }
+
+}

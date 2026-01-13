@@ -927,18 +927,22 @@ router.post('/v2/5-about-your-home/support-children-financially--simple', functi
     res.redirect( destination );
 });
 
-router.post('/v2/5-about-your-home/support-children-financially--full', function (req, res) {
+router.post(/support-children-financially--full/, function (req, res) {
     
     let hasChildren = req.session.data.hasChildren | 'no';
     let noOfChildren = ( !Number.isNaN(parseInt(req.session.data.noOfChildren)) ) ? parseInt(req.session.data.noOfChildren) : 0;
     
     let destination = ( hasChildren === 'no' || noOfChildren === 0 ) ? 'live-with-another-person--full' : 'about-your-children--full';
+    if( req.originalUrl.indexOf('full-v2') > -1 ){
+        destination += '-v2';
+    }
+    
     res.redirect( destination );
 
 });
 
-router.post('/v2/5-about-your-home/about-your-children--full', function (req, res) {
-    let destination = 'live-with-another-person--full';
+router.post(/about-your-children--full/, function (req, res) {
+    let destination = ( req.originalUrl.indexOf('full-v2') > -1 ) ? 'live-with-another-person--full-v2' : 'live-with-another-person--full';
     res.redirect( destination );
 });
 
