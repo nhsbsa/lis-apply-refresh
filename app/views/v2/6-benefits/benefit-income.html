@@ -1,292 +1,324 @@
 {% extends 'layout.html' %}
 
-<!-- Set the page title -->
 {% block pageTitle %}
-Are you applying for you or someone else?
+What subject are you studying?
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
-{{ backLink({
-    "href": 'javascript:history.go(-1);',
-    "text": "Back"
-  }) }}
+    {{ backLink({
+        href: 'javascript:history.go(-1);',
+        text: 'Back'
+    }) }}
 {% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
-{% block outerContent %}
-{% endblock %}
-
-
+{% block outerContent %}{% endblock %}
 
 {% block content %}
+
 <div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
 
-    <div class="nhsuk-grid-column-two-thirds">
 
-        <span class="nhsuk-caption-l">Income and other money</span>
-        <h1 class="nhsuk-fieldset__legend--l">
-            Do you get any of these benefits?
-        </h1>
-        <p>We will only ask about benefits that can affect the outcome of your application.</p>
-        <p>Select all options that are relevant to you.</p>
+        <form method="post" novalidate>
 
-        <form action="who-is-applying" method="post">
+            <span class="nhsuk-caption-l">Income and other money</span>
 
-            <!-- ----------- Unemployment benefits ---------- -->
+            <h1 class="nhsuk-heading-l">Do you or your partner get any of these benefits?</h1>
 
-            <details class="nhsuk-details nhsuk-expander" open>
-                <summary class="nhsuk-details__summary">
-                    <span class="nhsuk-details__summary-text">
-                        Unemployment benefits
-                    </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                            <div class="nhsuk-checkboxes">
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="" name="tax-credit-type" type="checkbox"
-                                        value="WTCandCTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
-                                        Jobseekers Allowance (JSA)
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </details>
+            <p class="nhsuk-hint">Select all that apply</p>
+            <p class="nhsuk-hint">We will only ask about benefits that can affect the outcome of your application.</p>
 
-            <!-- ---------- Disability, illness and carer benefits ---------- -->
 
-            <details class="nhsuk-details nhsuk-expander" open>
-                <summary class="nhsuk-details__summary">
-                    <span class="nhsuk-details__summary-text">
-                        Disability, illness and carer benefits
-                    </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                            <div class="nhsuk-checkboxes">
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
-                                        type="checkbox" value="WTCandCTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
-                                        Working Tax Credit and Child Tax Credit together
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC-Disability" name="tax-credit-type"
-                                        type="checkbox" value="WTC-Disability">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC-Disability">
-                                        Working Tax Credit on its own, including a disability element
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="CTC" name="tax-credit-type"
-                                        type="checkbox" value="CTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
-                                        Child Tax Credit on its own
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Working Tax Credit on its own
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Working Tax Credit on its own
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Working Tax Credit on its own
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Working Tax Credit on its own
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Working Tax Credit on its own
-                                    </label>
-                                </div><br>
-                                <h4>Benefits for Scotland only</h4>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Child Disability Payment (CDP)
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Pension Age Disability Payment
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Carer Support Payment
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </details>
+            <!-- HIDE ALL BUTTON -->
+            {{ button({
+                text: 'Hide all',
+                classes: 'nhsuk-button--secondary id-hide-all'
+            }) }}
 
-            <!-- ---------- Armed forces disability benefits ---------- -->
+            <script>
+                document.addEventListener('DOMContentLoaded',function(){
 
-            <details class="nhsuk-details nhsuk-expander" open>
-                <summary class="nhsuk-details__summary">
-                    <span class="nhsuk-details__summary-text">
-                        Armed forces disability benefits
-                    </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                            <div class="nhsuk-checkboxes">
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
-                                        type="checkbox" value="WTCandCTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
-                                        Working Tax Credit and Child Tax Credit together
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC-Disability" name="tax-credit-type"
-                                        type="checkbox" value="WTC-Disability">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC-Disability">
-                                        Working Tax Credit on its own, including a disability element
-                                    </label>
-                                </div>
-                                <div class="nhsuk-radios__item">
-                                    <input class="nhsuk-checkboxes__input" id="CTC" name="tax-credit-type"
-                                        type="checkbox" value="CTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
-                                        Child Tax Credit on its own
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </details>
 
-            <!-- ---------- Death and bereavement benefits ---------- -->
+                    //
+                    // BUTTONS
+                    //
+                    const btn = document.querySelector('.id-hide-all');
 
-            <details class="nhsuk-details nhsuk-expander" open>
-                <summary class="nhsuk-details__summary">
-                    <span class="nhsuk-details__summary-text">
-                        Death and bereavement benefits
-                    </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                            <div class="nhsuk-checkboxes">
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
-                                        type="checkbox" value="WTCandCTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
-                                        Working Tax Credit and Child Tax Credit together
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC-Disability" name="tax-credit-type"
-                                        type="checkbox" value="WTC-Disability">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC-Disability">
-                                        Working Tax Credit on its own, including a disability element
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="CTC" name="tax-credit-type"
-                                        type="checkbox" value="CTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
-                                        Child Tax Credit on its own
-                                    </label>
-                                </div>
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTC" name="tax-credit-type"
-                                        type="checkbox" value="WTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                                        Working Tax Credit on its own
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </details>
+                    btn.addEventListener('click',function(e){
 
-            <!-- ---------- Maternity Benefits ---------- -->
+                        const inner = btn.innerHTML.trim();
 
-            <details class="nhsuk-details nhsuk-expander" open>
-                <summary class="nhsuk-details__summary">
-                    <span class="nhsuk-details__summary-text">
-                        Maternity Benefits
-                    </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                            <div class="nhsuk-checkboxes">
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="WTCandCTC" name="tax-credit-type"
-                                        type="checkbox" value="WTCandCTC">
-                                    <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
-                                        Working Tax Credit and Child Tax Credit together
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </details>
+                        if( inner === 'Hide all' ){
+                            // Hide all
+                            btn.innerHTML = 'Show all';
+                            document.querySelectorAll('.nhsuk-expander').forEach(function(el){
+                                el.removeAttribute('open');
+                            });
+                        } else {
+                            // Show all
+                            btn.innerHTML = 'Hide all';
+                            document.querySelectorAll('.nhsuk-expander').forEach(function(el){
+                                el.addAttribute('open');
+                            });
+                        }
 
-            <div class="nhsuk-form-group">
-                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                    <div class="nhsuk-checkboxes">
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="" name="tax-credit-type" type="checkbox"
-                                value="WTCandCTC">
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="WTCandCTC">
-                                No, I do not get any of these benefits
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
+                        e.preventDefault();
+                        e.stopPropagation();
 
-            <button class="nhsuk-button" type="submit">
-                Continue
-            </button>
+                    });
+
+                    //
+                    // CHECKBOXES
+                    //
+                    const checkbox = document.querySelector('#noneOfTheAbove-2');
+                    const checkboxes = document.querySelectorAll('.nhsuk-expander input[type="checkbox"]');
+                    
+                    checkbox.addEventListener('change',function(e){
+                        checkboxes.forEach(function( el ){
+                            el.checked = false;
+                        });
+                    });
+
+                    checkboxes.forEach(function( el ){
+                        el.addEventListener('change',function(e){
+                            if( e.target.checked === true ){
+                                checkbox.checked = false;
+                            }
+                        });
+                    });
+
+                });
+            </script>
+
+
+            <!-- UNEMPLOYMENT BENEFITS -->
+            {% call details({
+                summaryText: 'Unemployment benefits',
+                classes: 'nhsuk-expander',
+                attributes: { open: true}
+            }) %}
+
+                {{ checkboxes({
+                    idPrefix: 'unemploymentBenefits',
+                    name: 'unemploymentBenefits',
+                    items: [
+                        {
+                            value: 'newStyleJobseekersAllowanceJSA',
+                            text: "New Style Jobseeker's Allowance (JSA)",
+                            hint: {
+                                html: '<span class="nhsuk-u-font-size-16">If you’re unemployed or work less than 16 hours a week on average you may be able to get New Style JSA. It is a contribution based benefit.</span>'
+                            }
+                        }
+                    ]
+                }) }}
+                
+            {% endcall %}
+
+
+
+            <!-- DISABILITY, ILLNESS AND CARER BENEFITS -->
+            {% call details({
+                summaryText: 'Disability, illness and carer benefits',
+                classes: 'nhsuk-expander',
+                attributes: { open: true}
+            }) %}
+
+                {{ checkboxes({
+                    idPrefix: 'disabilityIllnessAndCarerBenefits',
+                    name: 'disabilityIllnessAndCarerBenefits',
+                    items: [
+                        {
+                            value: 'employmentandSupportAllowanceESA',
+                            text: 'New Style Employment and Support Allowance (ESA)',
+                            hint: {
+                                html: '<span class="nhsuk-u-font-size-16">If you are ill or have a health condition or disability that limits your ability to work you may be able to get New Style ESA. It is a contributory benefit.</span>'
+                            }
+                        },
+                        {
+                            value: 'personalIndependencePaymentPIP',
+                            text: 'Personal Independence Payment (PIP)'
+                        },
+                        {
+                            value: 'disabilityLivingAllowanceDLA',
+                            text: 'Disability Living Allowance (DLA)'
+                        },
+                        {
+                            value: 'attendanceAllowance',
+                            text: 'Attendance Allowance'
+                        },
+                        {
+                            value: 'industrialInjuriesDisablementBenefit',
+                            text: 'Industrial Injuries Disablement Benefit'
+                        },
+                        {
+                            value: 'carersAllowance',
+                            text: "Carer's Allowance",
+                            hint: {
+                                html: '<span class="nhsuk-u-font-size-16">This is different from the care component of DLA.</span>'
+                            }
+                        },
+                        {
+                            value: 'incapacityBenefit',
+                            text: 'Incapacity Benefit'
+                        },
+                        {
+                            value: 'severeDisablementAllowance',
+                            text: 'Severe Disablement Allowance'
+                        }
+                    ]
+                }) }}
+
+                
+            {% endcall %}
+
+
+
+            <!-- SCOTLAND ONLY - DISABILITY, ILLNESS AND CARER BENEFITS -->
+            {% call details({
+                summaryText: 'Scotland only - Disability, illness and carer benefits',
+                classes: 'nhsuk-expander',
+                attributes: { open: true}
+            }) %}
+
+                {{ checkboxes({
+                    idPrefix: 'scotlandOnlyDisabilityIllnessAndCarerBenefits',
+                    name: 'scotlandOnlyDisabilityIllnessAndCarerBenefits',
+                    items: [
+                        {
+                            value: 'childDisabilityPaymentCDP',
+                            text: 'Child Disability Payment (CDP)'
+                        },
+                        {
+                            value: 'pensionAgeDisabilityPayment',
+                            text: 'Pension Age Disability Payment'
+                        },
+                        {
+                            value: 'carerSupportPayment',
+                            text: 'Carer Support Payment'
+                        }
+                    ]
+                }) }}
+                
+            {% endcall %}
+
+
+
+
+            <!-- ARMED FORCES DISABILITY BENEFITS -->
+            {% call details({
+                summaryText: 'Armed forces disability benefits',
+                classes: 'nhsuk-expander',
+                attributes: { open: true}
+            }) %}
+
+                {{ checkboxes({
+                    idPrefix: 'armedForcesDisabilityBenefits',
+                    name: 'armedForcesDisabilityBenefits',
+                    items: [
+                        {
+                            value: 'armedForcesIndependencePayment',
+                            text: 'Armed Forces Independence Payment'
+                        },
+                        {
+                            value: 'armedForcesCompensationScheme',
+                            text: 'Armed Forces Compensation Scheme'
+                        },
+                        {
+                            value: 'warDisablementPension',
+                            text: 'War Disablement Pension'
+                        }
+                    ]
+                }) }}
+
+                
+            {% endcall %}
+
+
+
+            <!-- DEATH AND BEREAVEMENT BENEFITS -->
+            {% call details({
+                summaryText: 'Death and bereavement benefits',
+                classes: 'nhsuk-expander',
+                attributes: { open: true}
+            }) %}
+
+                {{ checkboxes({
+                    idPrefix: 'deathAndBereavementBenefits',
+                    name: 'deathAndBereavementBenefits',
+                    items: [
+                        {
+                            value: 'bereavementSupportPayment',
+                            text: 'Bereavement Support Payment'
+                        },
+                        {
+                            value: 'widowedParentsAllowance',
+                            text: "Widowed Parent's Allowance"
+                        },
+                        {
+                            value: 'warWidowerPension',
+                            text: 'War Widow(er) Pension'
+                        },
+                        {
+                            value: 'industrialDeathBenefit',
+                            text: 'Industrial Death Benefit'
+                        }
+                    ]
+                }) }}
+                
+            {% endcall %}
+
+
+
+
+             <!-- MATERNITY BENEFITS -->
+            {% call details({
+                summaryText: 'Maternity benefits',
+                classes: 'nhsuk-expander',
+                attributes: { open: true}
+            }) %}
+
+                {{ checkboxes({
+                    idPrefix: 'maternityBenefits',
+                    name: 'maternityBenefits',
+                    items: [
+                        {
+                            value: 'maternityAllowance',
+                            text: 'Maternity Allowance'
+                        }
+                    ]
+                }) }}
+                
+            {% endcall %}
+
+            {{ checkboxes({
+                    idPrefix: 'noneOfTheAbove',
+                    name: 'noneOfTheAbove',
+                    items: [
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            value: 'none',
+                            text: 'No, I do not get any of these benefits'
+                        }
+                    ]
+                }) }}
+
+
+
+
+
+            {{ button({
+                text: 'Continue'
+            }) }}
 
         </form>
 
-    </div>
+        
+
+        
+
+	</div>
 </div>
 
 {% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What subject are you studying?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ backLink({
+        href: 'javascript:history.go(-1);',
+        text: 'Back'
+    }) }}
+{% endblock %}
+
+{% block outerContent %}{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+
+        <form method="post" novalidate>
+
+            <span class="nhsuk-caption-l">Income and other money</span>
+            
+            {{ radios({
+            idPrefix: 'howMuchJSA',
+            name: 'howMuchJSA',
+            value: data.howMuchESA,
+            fieldset: {
+                legend: {
+                    text: "How much New Style Jobseeker's Allowance (JSA) do you get?",
+                    classes: 'nhsuk-fieldset__legend--l',
+                    isPageHeading: true
+                }
+            },
+            items: [
+                {
+                value: 'weekly',
+                text: 'I know my weekly rate'
+                },
+                {
+                value: 'fortnightly',
+                text: 'I know how much I get paid every two weeks'
+                }
+            ]
+            }) }}
+
+            {{ button({
+                text: 'Continue'
+            }) }}
+
+        </form>
+
+        
+
+        
+
+	</div>
+</div>
+
+{% endblock %}
