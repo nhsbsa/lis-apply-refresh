@@ -25,6 +25,16 @@
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
 
+    {{ errorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Select if your partner gets money from any of these, or select '\No, they do not get money from any of these'",
+          href: "#pensions"
+        }
+      ]
+    }) }}
+
         {% from 'checkboxes/macro.njk' import checkboxes %}
 
 <form action="partner-money-coming-in" method="post">
@@ -42,8 +52,12 @@
     hint: {
       text: "Select all that apply to them"
     },
+    errorMessage: {
+      text: "Select if your partner gets money from any of these, or select '\No, they do not get money from any of these'"
+    },
     items: [
       {
+        id: "pensions",
         value: "Pensions (state, work, private)",
         text: "Pensions (state, work, private)",
         exclusiveGroup: "money-in"

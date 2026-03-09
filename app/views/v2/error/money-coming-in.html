@@ -25,6 +25,16 @@ Do you get money from any of these?
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
 
+    {{ errorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Select if you get money from any of these, or select '\No, I do not get money from any of these'",
+          href: "#pensions"
+        }
+      ]
+    }) }}
+
           <span class="nhsuk-caption-l">Before you start</span>
 
         {% from 'checkboxes/macro.njk' import checkboxes %}
@@ -32,7 +42,7 @@ Do you get money from any of these?
   <form action="/v2/1-check-before-you-start/money-coming-in" method="post">
   {{ checkboxes({
     idPrefix: "money-coming-in",
-    name: "moneyComingIn",
+    name: "money-in",
     
     fieldset: {
       legend: {
@@ -43,6 +53,9 @@ Do you get money from any of these?
     },
     hint: {
       text: "Select all that apply to you"
+    },
+    errorMessage: {
+      text: "Select if you get money from any of these, or select '\No, I do not get money from any of these'"
     },
     items: [
   {
