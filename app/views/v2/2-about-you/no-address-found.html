@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+No address found
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{{ backLink({
+"href": 'javascript:history.go(-1);',
+"text": "Back"
+}) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <span class="nhsuk-caption-l">Personal details</span>
+        <h1 class="nhsuk-heading-l">No address found</h1>
+        {{ hint({
+        html: 'We could not find an address that matches <strong>NE15 8NY</strong> and <strong>Nhs B S A, Stella House.</strong> You can <a
+            href="find-your-address" class="nhsuk-link">Search again</a> or <a href="what-is-your-address" class="nhsuk-link">enter the address manually</a>'
+        }) }}
+
+        <a href="what-is-your-address" class="nhsuk-link">Enter address manually</a>
+        <!-- End of content -->
+    </div>
+</div>
+{% endblock %}
