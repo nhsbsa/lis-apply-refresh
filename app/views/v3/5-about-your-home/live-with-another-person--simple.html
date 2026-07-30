@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What subject are you studying?
+{% endblock %}
+
+{% block beforeContent %}
+    {{ backLink({
+        href: 'javascript:history.go(-1);',
+        text: 'Back'
+    }) }}
+{% endblock %}
+
+{% block outerContent %}{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+
+        <form method="post" novalidate>
+
+            <span class="nhsuk-caption-l">People who live with you</span>
+
+            {% set radioPageHeader = true %}
+            {% set summaryListItem = 'Children, who you support financially' %}
+            {% set noOfChildren = data.noOfChildren | int %}
+
+            
+            {% if noOfChildren > 0 %}
+                {% if noOfChildren === 1 %}
+                    {% set summaryListItem = '1 child, who you support financially' %}
+                {% else %}
+                    {% set summaryListItem = noOfChildren + ' children, who you support financially' %}
+                {% endif %}
+            {% endif %}
+
+
+            {% if data.hasChildren === 'yes' and noOfChildren > 0 %}
+
+                {% set radioPageHeader = false %}
+
+                <h1 class="nhsuk-heading-l">You've told us you live with:</h1>
+
+                <style>
+                    @media (min-width: 40.0625em) {
+                        .nhsuk-summary-list__key {
+                            width: 100%;
+                        }
+                    }
+                </style>
+
+                {{ summaryList({
+                    rows: [
+                        {
+                        key: {
+                            text: summaryListItem
+                        },
+                        actions: {
+                            items: [
+                            {
+                                href: 'support-children-financially--simple',
+                                text: 'Change',
+                                visuallyHiddenText: 'number of children'
+                            }
+                            ]
+                        }
+                        }
+                    ]}) }}
+
+            {% endif %}
+
+
+            {{ radios({
+                idPrefix: 'anyoneElse',
+                name: 'anyoneElse',
+                fieldset: {
+                    legend: {
+                        text: 'Does anyone else who is 18 or older, live with you in your home?',
+                        classes: 'nhsuk-fieldset__legend--l',
+                        isPageHeading: radioPageHeader
+                    }
+                },
+                items: [
+                    {
+                    value: 'yes',
+                    text: 'Yes'
+                    },
+                    {
+                    value: 'no',
+                    text: 'No'
+                    }
+                ]
+            }) }}
+
+
+            {{ button({
+                text: 'Continue'
+            }) }}
+
+        </form>
+
+        
+
+        
+
+	</div>
+</div>
+
+{% endblock %}

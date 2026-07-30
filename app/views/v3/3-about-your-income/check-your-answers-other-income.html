@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <span class="nhsuk-caption-l">Apply for help with NHS costs</span>
+        <h1 class="nhsuk-heading-l">Check your answers</h1>
+
+        <h2 class="nhsuk-heading-m">Money from somewhere else</h2>
+
+        {% set howPayingForThingsList = '' %}
+        {% set noneSelected = false %}
+        {% set showSavings = false %}
+        {% set showFriends = false %}
+        {% set showDonations = false %}
+        
+        {% if data['howPayingForThings'] %}
+          {% if 'none' in data['howPayingForThings'] %}
+            {% set howPayingForThingsList = 'None of these' %}
+            {% set noneSelected = true %}
+          {% else %}
+            {% for item in data['howPayingForThings'] %}
+              {% set capitalizedItem = item | capitalize %}
+              {% set howPayingForThingsList = howPayingForThingsList + capitalizedItem + '<br><br>' %}
+              
+              {% if item == 'Savings' %}
+                {% set showSavings = true %}
+              {% elif item == 'Money from friends or family' %}
+                {% set showFriends = true %}
+              {% elif item == 'Donations from charity or voluntary organisations' %}
+                {% set showDonations = true %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+        
+        {# -- Always show "How you're paying for things" row -- #}
+        {{ summaryList({
+          rows: [
+            {
+              key: {
+                text: "How you're paying for things"
+              },
+              value: {
+                text: howPayingForThingsList | safe
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-paying-for-things",
+                    text: "Change",
+                    visuallyHiddenText: "how you're paying for things at the moment"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+        
+        {# -- Show these only if "none" was NOT selected -- #}
+        {% if not noneSelected and showSavings %}
+          {{ summaryList({
+            rows: [
+              {
+                key: { text: "How much you spend each week from savings" },
+                value: { text: data['savingsAmount'] | currencyOnly },
+                actions: {
+                  items: [
+                    {
+                      href: "amount-from-savings",
+                      text: "Change",
+                      visuallyHiddenText: "how much you spend each week from savings"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% endif %}
+        
+        {% if not noneSelected and showFriends %}
+          {{ summaryList({
+            rows: [
+              {
+                key: { text: "How much you get each week from friends or relatives" },
+                value: { text: data['friendsAmount'] | currencyOnly },
+                actions: {
+                  items: [
+                    {
+                      href: "amount-from-friends-relatives",
+                      text: "Change",
+                      visuallyHiddenText: "how much you get each week from friends or relatives"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% endif %}
+        
+        {% if not noneSelected and showDonations %}
+          {{ summaryList({
+            rows: [
+              {
+                key: { text: "How much you get each week in donations" },
+                value: { text: data['donationsAmount'] | currencyOnly },
+                actions: {
+                  items: [
+                    {
+                      href: "amount-from-donations",
+                      text: "Change",
+                      visuallyHiddenText: "how much you get each week in donations"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% endif %}
+        
+        {# -- Show this ONLY if "none" was selected -- #}
+        {% if noneSelected %}
+          {{ summaryList({
+            rows: [
+              {
+                key: { text: "How you're paying living costs" },
+                value: { text: data['dailyCosts'] },
+                actions: {
+                  items: [
+                    {
+                      href: "how-paying-daily-costs",
+                      text: "Change",
+                      visuallyHiddenText: "how you're paying your daily living costs"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        {% endif %}
+          
+          
+
+        <a href="your-application-progress-3" class="nhsuk-button" role="button">Continue</a>
+        <!-- End of content -->
+    </div>
+</div>
+{% endblock %}

@@ -1,7 +1,10 @@
 // External dependencies
-const express = require('express');
+const express = require('express')
 
-const router = express.Router();
+const router = express.Router()
+
+// Add your routes here - above the module.exports line
+
 
 
 
@@ -947,6 +950,5 @@ router.post(/about-your-children--full/, function (req, res) {
 });
 
 
-  
 
-module.exports = router;
+module.exports = router

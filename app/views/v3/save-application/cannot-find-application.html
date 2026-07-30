@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+    We could not find an application that was saved with the email address and date of birth you provided
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{% if data['saveEmail'] %}
+{% set saveEmailAddress = data['saveEmail'] %}
+{% else %}
+{% set saveEmailAddress = "example@live.com" %}
+{% endif %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1 class="nhsuk-heading-l">We could not find an application that was saved with the email address and date of birth you provided</h1>
+        
+        <p>This could be because:</p>
+
+        <ul>
+            <li>the email address and date of birth do not match those that you used to save your application</li>
+            <li>your application was started more than 14 days ago</li>
+            <li>you did not save your application</li>
+        </ul>
+
+        <p>You will need to <a href="/v2/1-check-before-you-start/apply-online">start a new application</a>.</p>
+
+        <!-- End of content -->
+    </div>
+</div>
+{% endblock %}

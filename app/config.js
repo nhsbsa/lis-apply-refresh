@@ -4,16 +4,6 @@ module.exports = {
   // Service name
   serviceName: 'Apply online for help with NHS costs',
 
-  // Port to run nodemon on locally
-  port: 2000,
-
-  // Automatically stores form data, and send to all views
-  useAutoStoreData: 'true',
-
-  // Enable cookie-based session store (persists on restart)
-  // Please note 4KB cookie limit per domain, cookies too large will silently be ignored
-  useCookieSessionStore: 'false',
-
-  // Enable or disable built-in docs and examples.
-  useDocumentation: true,
-};
+  // Port to run the prototype on locally
+  port: 3000
+}

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  While you're waiting on your Universal Credit decision
+{% endblock %}
+
+<!-- For the skip link -->
+{% block skipLink %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+<style>
+  /* new skip link format*/
+.nhsuk-skip-link:focus {
+  display: block;
+  position: static;
+}
+</style>
+
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+
+    <span class="nhsuk-caption-l">Benefits</span>
+    <h1 class="nhsuk-heading-l">While you're waiting on your Universal Credit decision</h1>
+
+    <p>Until your first assessment period is complete, Universal Credit does not entitle you to help with NHS costs.</p>
+
+    <p>If you need to pay for any NHS charges, for example, prescriptions or dental treatment, make sure you get a receipt and ask how to claim a refund.</p>
+
+    <p>If you pay for a prescription, ask for a refund receipt called an FP57 when you pay - you cannot get one later. 
+      Find out more about <a href="r">refunds for NHS prescription charges</a>.</p>
+
+
+      {{ button({
+          "text": "Continue"
+      }) }}
+
+  <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

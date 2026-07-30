@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  How are you paying for things at the moment?
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+          <span class="nhsuk-caption-l">Money from somewhere else</span>
+
+        {% from 'checkboxes/macro.njk' import checkboxes %}
+
+  <form action="how-paying-for-things" method="post">
+  {{ checkboxes({
+    idPrefix: "how-paying-for-things",
+    name: "howPayingForThings",
+    
+    fieldset: {
+      legend: {
+        text: "How are you paying for things at the moment?",
+        isPageHeading: true,
+        classes: "nhsuk-fieldset__legend--l"
+      }
+    },
+    items: [
+  {
+    value: "Money from friends or family",
+    text: "Money from friends or family"
+  },
+  {
+    value: "Savings",
+    text: "Savings"
+  },
+  {
+    value: "Donations from charity or voluntary organisations",
+    text: "Donations from charity or voluntary organisations"
+  },
+
+  {
+    divider: "or"
+  },
+  {
+    value: "none",
+    text: "None of these",
+    exclusive: true
+    }
+  ]
+  }) }}
+
+  {{ button({
+    "text": "Continue"
+}) }}
+</form>
+       
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

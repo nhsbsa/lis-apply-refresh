@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  As part of your Universal Credit award, do you get extra payments for any of these?
+{% endblock %}
+
+<!-- For the skip link -->
+{% block skipLink %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+<style>
+  /* new skip link format*/
+.nhsuk-skip-link:focus {
+  display: block;
+  position: static;
+}
+</style>
+
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+    {{ errorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Select yes if your Universal Credit award includes payments for a child or disability",
+          href: "#yes-error"
+        }
+      ]
+    }) }}
+
+
+        <!-- <form action="sight-impaired" method="post"> -->
+          <span class="nhsuk-caption-l">Benefits</span>
+          <!-- <h1 class="nhsuk-heading-l">Do you get Universal Credit?</h1> -->
+
+            {{ radios({
+              "idPrefix": "universal-credit-claim",
+              "name": "universal-credit-claim",
+              errorMessage: {
+                text: "Select yes if your Universal Credit award includes payments for a child or disability"
+              },
+              "fieldset": {
+                legend: {
+                  text: "As part of your Universal Credit award, do you get extra payments for any of these?",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              },
+              "hint": {
+                "html": "
+                <ul>
+                  <li>Responsibility for a child or young person who lives with you</li>
+                  <li>Limited capability for work (LCW)</li>
+                  <li>Limited capacity for work and work related activity (LCWRA)</li>
+                </ul>"
+            },
+                "items": [
+                {
+                    "id": "yes-error",
+                    "value": "yes",
+                    "text": "Yes"
+                },
+                {
+                    "value": "no",
+                    "text": "No"
+                }
+                ]
+            }) }}
+      
+
+            {{ button({
+                "text": "Continue"
+            }) }}
+        <!-- </form> -->
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

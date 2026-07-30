@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+You can apply online for help with health costs
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+    {{ backLink({
+        "href": 'javascript:history.go(-1);',
+        "text": "Back"
+    }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsbsa-panel">
+            <div class="done-panel">
+            <h1 class="nhsuk-heading-l">You can apply online for help with health costs</h1>
+        </div>
+
+        <h2 class="nhsuk-heading-m">Before you start</h2>
+
+        <p>During the online application, we'll ask you about:</p>
+
+        <ul>
+            <li>income - how much you (or your partner) get from any jobs, pensions or benefits</li>
+            <li>housing costs - what you (or your partner) pay for things like Council Tax, rent and utilities</li>
+            <li>educational courses (if you are a student) - what and where you are studying, what your term dates are, and how your course is funded</li>
+        </ul>
+
+        <h2 class="nhsuk-heading-m">What we will ask you to send us</h2>
+
+        <p>If you or your partner get them, we will ask you to send us copies of your:</p>
+
+        <ul>
+            <li>payslips</li>
+            <li>latest Universal Credit monthly statement</li>
+        </ul>
+
+        <h2 class="nhsuk-heading-m">What happens after your application</h2>
+
+        <p>Once you complete your application, we will give you a reference number. You can use this if you need to contact us. We will process your application and contact you when we have made a decision.</p>
+
+        <p>If you are entitled to help, you will get either a:</p>
+
+        <ul>
+            <li><a href="https://www.nhsbsa.nhs.uk/nhs-low-income-scheme/hc2-certificates-full-help-health-costs" target="_blank">certificate for full help with health costs (HC2) (opens in a new tab)</a> - this includes free NHS prescriptions</li>
+            <li><a href="https://www.nhsbsa.nhs.uk/nhs-low-income-scheme/hc3-certificates-limited-help-health-costs" target="_blank">certificate for partial help with health costs (HC3) (opens in a new tab)</a> - you would still need to pay something towards your health costs, and need to pay for NHS prescriptions in full</li>
+        </ul>
+
+        <a href="your-application-progress" class="nhsuk-button" role="button">Continue</a>
+        
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Cannot apply online yet
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-l">
+			You cannot apply online
+		</h1>
+
+        <p>Based on your circumstances, you cannot apply online.</p>
+        <p>You can apply using a paper form. Find out <a href="https://www.nhsbsa.nhs.uk/nhs-low-income-scheme/if-you-cannot-apply-online-nhs-low-income-scheme" target="_blank">how to get an application form (opens in a new tab)</a>.</p>
+
+        {{ insetText({
+        html: "<p>If you're aged 18 and under and in full-time education, you are already entitled to full help with your NHS health costs. You do not need to apply for help from the NHS Low Income Scheme. Find out more about <a href=\"https://www.nhsbsa.nhs.uk/check-if-youre-eligible-help/help-health-costs-because-your-age-0\" target=\"_blank\">help with health costs because of your age (opens in a tab)</a>.</p>"
+        }) }}
+        
+        <!-- End of content -->
+	</div>
+</div>
+{% endblock %}

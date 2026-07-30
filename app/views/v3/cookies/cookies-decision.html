@@ -1,0 +1,98 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-cookies-1.html' %}
+
+
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Apply online for help with NHS costs
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For the skip link -->
+{% block skipLink %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+<style>
+  /* new skip link format*/
+.nhsuk-skip-link:focus {
+  display: block;
+  position: static;
+}
+</style>
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+		<h1>
+			Apply online for help with NHS costs
+		</h1>
+
+        <p>If you find it difficult to pay for your NHS costs you could get help depending on your financial circumstances.</p>
+        <p>You do not have to be claiming benefits to apply. If you're employed with a low income you may be eligible for help. We'll take your total household income, Council Tax and housing costs into account.</p>
+
+        <h2 class="nhsuk-heading-s">If you apply online, you will:</h2>
+        
+        <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-6">
+            <li>complete your application in around 20 minutes</li>
+            <li>be asked personalised questions based on your circumstances</li>
+            <li>get instant confirmation that we've received your application</li>
+            <li>get a reference number to use if you have any queries</li>
+        </ul>
+
+        <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                When do you not need to apply
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+          
+                <p><strong>You already get full help with health costs, and do not need to apply online, if you or your partner get:</strong></p>
+                <ul>
+                    <li>income support</li>
+                    <li>income-based JSA (Jobseeker's Allowance)</li>
+                    <li>income-related ESA (Employment and Support Allowance)</li>
+                    <li>Pension Credit Guarantee Credit</li>
+                    <li>Universal Credit (if your earnings during your last complete assessment period were £435 or less, or £935 or less if you had a child element or had limited capability for work)</li>
+                </ul>
+                <p>View <a href="https://www.nhsbsa.nhs.uk/check-if-youre-eligible-help/getting-benefits" target="_blank">more information about what these benefits entitle you to (opens in a new tab)</a>.</p>
+    
+                <p><strong>You also get partial help with health costs if you are:</strong></p>
+                <ul>
+                    <li>under 16 years old</li>
+                    <li>aged 18 and under and in full-time education</li>
+                </ul>
+                <p>View <a href="https://www.nhsbsa.nhs.uk/check-if-youre-eligible-help/aged-19-and-under" target="_blank">more information about what help you can get based on your age (opens in a new tab)</a>.</p>
+                <p>If you're still not sure if you should apply, <a href="https://check-for-help-paying-nhs-costs.nhsbsa.nhs.uk/start" target="_blank">check what help you can get (opens in a new tab)</a> by using our eligibility checker.</p>
+          
+            </div>
+          </details>
+
+        <p>Once you have started your application, you can save it using an email address and continue it later.</p>
+        <a href="/v2/1-check-before-you-start/check-can-apply-online" class="nhsuk-button" role="button">Start now</a>
+
+        <p>If you have already saved an application, you can continue it now. To do this, you will need the email address you used to save it.</p>
+        <a href="/v2/1-check-before-you-start/email-address-continue" class="nhsuk-button nhsuk-button--secondary" role="button">Continue an application</a>
+		<!-- End of content -->
+	</div>
+</div>
+{% endblock %}

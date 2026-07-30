@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  How much (on average) do you get in donations each week?
+{% endblock %}
+
+<!-- For the skip link -->
+{% block skipLink %}
+<a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+<style>
+  /* new skip link format*/
+.nhsuk-skip-link:focus {
+  display: block;
+  position: static;
+}
+</style>
+
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ backLink({
+    "href": 'javascript:history.go(-1);',
+    "text": "Back"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+
+
+
+        <form action="/v2/3-about-your-income/amount-from-donations" method="post">
+          <span class="nhsuk-caption-l">Money from somewhere else</span>
+          <h1 class="nhsuk-heading-l">How much (on average) do you get in donations each week?</h1>
+          
+          <p class="nhsuk-hint">The amount must include pence. For example, £146.20</p>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="example">
+              Amount
+            </label>
+            <div class="nhsuk-input__wrapper">
+              <div class="nhsuk-input__prefix" aria-hidden="true">£</div>
+              <input class="nhsuk-input nhsuk-input--width-10" name="donationsAmount" type="text">
+            </div>
+          </div>
+                
+            {{ button({
+              "text": "Continue"
+          }) }}
+
+        </form>
+        
+	</div>
+
+</div>
+{% endblock %}
