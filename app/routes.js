@@ -1494,14 +1494,6 @@ router.post(/about-your-children--full/, function (req, res) {
     res.redirect(destination);
 });
 
-router.get('/v3/2-about-you/find-your-address', function (req, res) {
-
-    console.log('GET FIND YOUR ADDRESS')
-    console.log('SESSION:', req.session.data)
-
-    res.render('v3/2-about-you/find-your-address')
-
-})
 
 router.post('/v3/2-about-you/date-of-birth', function (req, res) {
 
@@ -1533,6 +1525,27 @@ router.post('/v3/2-about-you/find-your-address', function (req, res) {
     }
 
     res.redirect('/v3/2-about-you/select-your-address')
+
+})
+
+router.post('/v3/2-about-you/select-your-address-single', function (req, res) {
+
+    if (!req.body.selectedAddress) {
+
+        return res.render('v3/2-about-you/select-your-address-single', {
+            errorList: [
+                {
+                    text: "Select your address",
+                    href: '#selectedAddress'
+                }
+            ],
+            selectedAddressError: {
+                text: "Select your address"
+            }
+        })
+    }
+
+    res.redirect('confirm-your-address')
 
 })
 
@@ -1595,6 +1608,27 @@ router.post('/v3/2-about-you/select-their-address', function (req, res) {
     if (!req.body.selectedAddress) {
 
         return res.render('v3/2-about-you/select-their-address', {
+            errorList: [
+                {
+                    text: "Select Their-name-here's address",
+                    href: '#selectedAddress'
+                }
+            ],
+            selectedAddressError: {
+                text: "Select Their-name-here's address"
+            }
+        })
+    }
+
+    res.redirect('confirm-their-address')
+
+})
+
+router.post('/v3/2-about-you/select-their-address-single', function (req, res) {
+
+    if (!req.body.selectedAddress) {
+
+        return res.render('v3/2-about-you/select-their-address-single', {
             errorList: [
                 {
                     text: "Select Their-name-here's address",
