@@ -2,7 +2,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Confirm your address
+Confirm their address
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -26,13 +26,13 @@ Confirm your address
     <div class="nhsuk-grid-column-two-thirds">
 
         <span class="nhsuk-caption-l">Personal details</span>
-        <h1 class="nhsuk-heading-l">Confirm your address</h1>
+        <h1 class="nhsuk-heading-l">Confirm Their-name-here's address</h1>
         {{ hint({
         html: '<strong>1</strong> result found for <strong>NE15 8NY</strong> and <strong>Stella House.</strong> <a
             href="find-your-address" class="nhsuk-link">Search again</a>'
         }) }}
 
-        <form action="nhs-number" method="post">
+        <form action="their-nhs-number" method="post">
 
             {% set insetTextHtml %}
             <p>Nhs B S A, Stella House, Goldcrest Way, Newcastle upon Tyne, NE15 8NY</p>

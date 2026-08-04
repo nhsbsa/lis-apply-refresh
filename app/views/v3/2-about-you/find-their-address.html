@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Find your address
+Find their address
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,8 +15,8 @@ Find your address
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-        {% if errorList %}
 
+        {% if errorList %}
         {{ errorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -26,13 +26,16 @@ Find your address
 
         <span class="nhsuk-caption-l">Personal details</span>
 
-        <h1 class="nhsuk-heading-l">Find your address</h1>
+        <h1 class="nhsuk-heading-l">Find Their-name-here's address</h1>
 
-        <form action="find-your-address" method="post">
+        <form action="find-their-address" method="post">
 
             {{ input({
             label: {
             text: "Postcode"
+            },
+            hint: {
+            text: "For example, NE1 4PA"
             },
             id: "postcode",
             name: "postcode",
