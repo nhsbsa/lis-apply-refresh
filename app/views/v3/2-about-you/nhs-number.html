@@ -23,87 +23,112 @@ Do you know your NHS number?
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 <div class="nhsuk-grid-row">
-	<div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-two-thirds">
 
-        <span class="nhsuk-caption-l">Personal details</span>
-        <h1 class="nhsuk-heading-l">Do you know your NHS number?</h1>
+    <form class="form" action="nhs-number" method="post">
+      <div class="nhsuk-form-group">
 
-        <p>You don't have to tell us your NHS number, but telling us helps us to identify you correctly and match your details to your health records.</p>
-        
-        <form action="sight-impaired" method="post">
-            {% set yesHtml %}
-                {{ input({
-                    "label": {
-                    "text": "What is your NHS number?"
-                    },
-                    "hint": {
-                    "text": "Your NHS number is not the same as your National Insurance number, which has letters in it."
-                    },
-                    id: "yes-nhs-number",
-                    name: "yesNhsNumber",
-                    classes: "nhsuk-u-width-two-thirds"
-                }) }}
-            {% endset -%}
+        <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Do you know your NHS number?
+            </h1>
+          </legend>
 
-            {{ radios({
-            "idPrefix": "nhs-number",
-            "name": "nhsNumber",
-            "fieldset": {
-                "legend": {
-                "text": "Do you know your NHS number?",
-                "classes": "nhsuk-u-visually-hidden",
-                "isPageHeading": false
-                }
-            },
-            "hint": {
-                "text": "Your NHS number is a 10-digit number, like 485 777 3456."
-            },
-            "items": [
-                {
-                "value": "yes",
-                "text": "Yes",
-                "conditional": {
-                    "html": yesHtml
-                  }
-                },
-                {
-                "value": "no",
-                "text": "No"
-                }
-            ]
-            }) }}
-      
-            {{ details({
-                "summaryText": "Where to find your NHS number",
-                "html": "
-                    <p>If you're registered with a GP, you'll have a 10-digit NHS number that is unique to you.</p>
-                    <p>It's usually on any letter or document you've received from the NHS, such as:</p>
+          <p>You do not need to provide your NHS number, but it can help us match your details correctly.</p>
 
-                    <ul>
-                        <li>
-                            prescriptions, usually underneath your name and address
-                        </li>
-                        <li>
-                            test results
-                        </li>
-                        <li>
-                            appointment letters
-                        </li>
-                        <li>
-                            maternity notes
-                        </li>
-                        <li>
-                            an NHS medical card
-                        </li>
-                    </ul>
-                "       
-              }) }}
+          <div class="nhsuk-hint" id="contact-hint">
+            This is a 10 digit number, like 485 777 3456.
+          </div>
 
-            {{ button({
-                "text": "Continue"
-            }) }}
-        </form>
-        <!-- End of content -->
-	</div>
+          <div class="nhsuk-radios nhsuk-radios--conditional">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="Yes" name="nhs-number-known" type="radio" value="Yes"
+                aria-controls="conditional-contact-1" aria-expanded="false">
+              <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+                Yes, I know my NHS number
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="email">
+                  NHS number
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="nhs-number-entered" name="nhs-number-entered"
+                  value="{{ data[nhs-number-entered] }}" type="text">
+              </div>
+
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="No" name="nhs-number-known" type="radio" value="No"
+                aria-controls="conditional-contact-3" aria-expanded="false">
+              <label class="nhsuk-label nhsuk-radios__label" for="contact-3">
+                No, I do not know my NHS number
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+
+      </div>
+
+      <!-- <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Where to find your NHS number
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>If you're registered with a GP, you will have a 10 digit NHS number unique to you.</p>
+
+          <p>You can find it on the NHS app or <a
+              href="https://www.nhs.uk/nhs-services/online-services/find-nhs-number/" target="_blank">use our online NHS
+              number finder (opens in new tab)</a>.</p>
+          </p>
+          <p>It is also on any letters or documents you receive from the NHS, such as:</p>
+          <ul>
+            <li>prescriptions</li>
+            <li>test results</li>
+            <li>appointment letters</li>
+            <li>maternity notes</li>
+          </ul>
+
+        </div>
+      </details> -->
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Where to find your NHS number
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          You can find your NHS number:
+          <ul>
+            <li>by <a href="https://www.nhsapp.service.nhs.uk/patient/profile?nhsa.sc=1" target="_blank">signing into
+                the NHS App or your account on the NHS website (opens in a new tab)</a></li>
+            <li>on any document or letter sent to you by the NHS, such as a prescription, test result or appointment
+              letter</li>
+              <li>by contacting your GP surgery</li>
+          </ul>
+        </div>
+
+      </details>
+      <!-- <form action="/updated-full-journey/v7/duration"> -->
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+    </form>
+
+    <p><a href="/updated-full-journey/v7/start">Cancel</a></p>
+    <!-- End of content -->
+  </div>
+
 </div>
+
+</div>
+
 {% endblock %}
